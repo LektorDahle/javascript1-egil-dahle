@@ -1,0 +1,21 @@
+{
+    "folders": [
+        {
+            "path": "."
+        }
+    ],
+    "settings": {
+        "git.confirmEmptyCommits": true,
+        "editor.wordBasedSuggestions": "off",
+        "emmet.showAbbreviationSuggestions": false,
+        "editor.suggest.localityBonus": true,
+        "editor.suggest.showSnippets": false,
+        "editor.suggest.showWords": false,
+        "javascript.suggest.names": false,
+        "editor.formatOnSave": true,
+        "editor.formatOnPaste": true
+    },
+    "extensions": {
+        "recommendations": ["usernamehw.errorlens"]
+    }
+}

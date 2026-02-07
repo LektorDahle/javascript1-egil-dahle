@@ -1,0 +1,26 @@
+{
+    "compilerOptions": {
+        "lib": [
+            "ES2024",
+            "DOM",
+            "DOM.Iterable"
+        ],
+        "module": "nodenext",
+        "moduleResolution": "nodenext",
+        "strict": true,
+        "checkJs": true,
+        "noImplicitAny": true,
+        "noImplicitThis": true,
+        "alwaysStrict": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noEmit": true,
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "baseUrl": ".",
+        "types": [
+            "jest",
+            "node"
+        ]
+    }
+}
