@@ -9,6 +9,14 @@ class Header {
         this.header = this.create("header");
         this.body.prepend(this.header);
     }
+
+    /**
+     * @todo Add functionality to add/change the logo image depending on dark/light mode
+     * @param {string} link 
+     */
+    addLogo(link){
+
+    }
 }
 
 class Footer {
