@@ -1,0 +1,108 @@
+:root {
+    font-size: clamp(0.8em, 1.5vw, 1.2em);
+
+    /* Fonts */
+    --font-header: "Barlow Condensed", sans-serif;
+    --font-header-weight: 600;
+    --font-header-style: normal;
+
+    --font-paragraph: "Source Sans 3", sans-serif;
+    --font-paragraph-weight: 400;
+    --font-paragraph-style: normal;
+
+    /* Spacing */
+    --button-padding: 10px 20px;
+    --border-radius: 8px;
+
+    /*--------------------------------------------------*/
+    /* Colors */
+    color-scheme: light dark;
+
+    /* Light theme colors*/
+    --text-color-light: #0a3641;
+    --background-color-light: #fffded;
+    --footer-bg-light: #fce762;
+    --bg-tint-color-light: #fffdeda7;
+
+    /* Dark */
+    --text-color-dark: #e8fdff;
+    --background-color-dark: #0a1d24;
+    --footer-bg-dark: #0a1d24;
+    --bg-tint-color-dark: #0b141680;
+
+    --main-cta: #f72c25;
+    --secondary-cta: #ffb17a;
+
+    /* Theme variables (those used in CSS styles) */
+    --text-color: var(--text-color-light);
+    --background-color: var(--background-color-light);
+    --footer-bg: var(--footer-bg-light);
+    --bg-tint-color: var(--bg-tint-color-light);
+    --drop-shadow-color: color-mix(in srgb, var(--background-color-dark), transparent 50%);
+}
+
+:root:has(#theme-toggle:checked) {
+    .light-theme {
+        display: none;
+    }
+    --text-color: var(--text-color-dark);
+    --background-color: var(--background-color-dark);
+    --footer-bg: var(--footer-bg-dark);
+    --bg-tint-color: var(--bg-tint-color-dark);
+}
+:root:has(#theme-toggle:not(:checked)) {
+    .dark-theme {
+        display: none;
+    }
+}
+
+h1,
+h2,
+h3,
+button,
+a {
+    font-family: var(--font-header);
+    font-weight: var(--font-header-weight);
+    font-style: var(--font-header-style);
+    color: var(--text-color);
+}
+
+h1 {
+    font-size: 1.56rem;
+}
+
+h2 {
+    font-size: 1.25rem;
+}
+
+h3 {
+    font-size: 0.8rem;
+}
+
+a {
+    font-size: 1.25rem;
+    text-decoration: none;
+}
+
+p,
+th,
+td,
+input,
+label {
+    font-size: 1rem;
+    color: var(--text-color);
+    font-family: var(--font-paragraph);
+    font-weight: var(--font-paragraph-weight);
+    font-style: var(--font-paragraph-style);
+}
+
+p,
+label {
+    margin: 2em 0;
+    line-height: 1.5;
+}
+
+form input {
+    display: block;
+    margin-bottom: 1em;
+}
