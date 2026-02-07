@@ -1,0 +1,3 @@
+digraph RanyDays {
+    home [label="HOME"]
+}
