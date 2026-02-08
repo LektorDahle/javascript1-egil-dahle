@@ -39,6 +39,7 @@ export class Header {
     //    </div>
     //</header>`
         this.addLogo("./img/icons/RD-logo-lightmode.svg")
+        this.addThemeButton(this.header);
     }
 
     /**
@@ -77,6 +78,38 @@ export class Header {
 
         a.appendChild(h2);
         li.appendChild(a);
+    }
+
+    /**
+     * Creates the ham
+     * @param {HTMLElement} parent 
+     */
+    addThemeButton(parent){
+        const wrapper = this.create("div");
+        parent.appendChild(wrapper);
+        wrapper.classList.add("light-dark-switch-wrapper")
+
+        const h2_light = this.create("h2");
+        wrapper.appendChild(h2_light);
+        h2_light.textContent = "LIGHT";
+
+
+        const label = this.create("label");
+        label.classList.add ("theme-switch");
+        wrapper.append(label);
+
+        const h2_dark = this.create("h2");
+        wrapper.appendChild(h2_dark);
+        h2_dark.textContent = "DARK";
+
+        const input = this.create("input");
+        input.id = "theme-toggle";
+        input.type  = "checkbox";
+        label.appendChild(input);
+
+        const span = this.create("span");
+        span.classList.add("slider");
+        label.appendChild(span);
     }
 }
 

@@ -15,6 +15,9 @@ describe("checks the render of the header", () => {
         /**Tests that the addLogo does not throw any error */
         expect(() => new Header(document.body).addLogo("./img/icons/RD-logo-lightmode.svg")).not.toThrow();
 
+        document.body.innerHTML = "";
+        new Header(document.body)
+        
         /** @type {HTMLElement | null} */
         const logoWrapper = document.querySelector(".logo-wrapper");
         expect(logoWrapper).not.toBeNull();
@@ -32,6 +35,9 @@ describe("checks the render of the header", () => {
     test("add navigation link", () => {
         expect(() => new Header(document.body).addLI(document.body, "./content", "Content")).not.toThrow();
 
+        document.body.innerHTML = "";
+        new Header(document.body)
+
         const navWrapper = document.querySelector(".nav-wrapper");
         expect(navWrapper).not.toBeNull();
 
@@ -43,5 +49,29 @@ describe("checks the render of the header", () => {
         const h2 = document.querySelector(".nav-wrapper a h2");
         expect(h2).not.toBeNull();
         expect(h2?.textContent).not.toBe("");
+    });
+
+    test("add theme change button", () => {
+        expect(() => new Header(document.body).addThemeButton(document.body)).not.toThrow();
+
+        document.body.innerHTML = "";
+        new Header(document.body)
+        const navWrapper = document.querySelector(".light-dark-switch-wrapper");
+        expect(navWrapper).not.toBeNull();
+
+        const h2 = document.querySelectorAll(".light-dark-switch-wrapper h2");
+        expect(h2[0].textContent).toBe("LIGHT");
+        expect(h2[1].textContent).toBe("DARK");
+
+        const label = document.querySelector(".theme-switch");
+        expect(label).not.toBeNull();
+
+        const input = document.querySelector("#theme-toggle");
+        expect(input).not.toBeNull();
+        expect(input?.getAttribute("type")).toBe("checkbox");
+
+        const span = document.querySelector(".slider");
+        expect(span).not.toBeNull();
+        
     });
 });
