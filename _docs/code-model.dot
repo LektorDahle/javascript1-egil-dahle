@@ -1,6 +1,6 @@
 digraph RanyDays {
     compound=true;
-    api [ label = "Innhold", shape= "cylinder" ];
+    api [ label = "API-connection", shape= "cylinder" ];
     localStorage [ label = "LocalStorage", shape = "folder" ];
 
     
