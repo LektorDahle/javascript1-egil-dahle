@@ -25,3 +25,7 @@ My page will use local storage (cookies), so I should add a page about this as w
 # Page layout
 
 ![Page layout wireframe with comments](./basic-wireframe.svg)
+
+
+# Reflections
+Started unit testing, and found a bunch of hidden issues with my code. Still considering unit testing an awfull activity that nobody should be subjected to, but is starting to se value in it, and is almost looking forward to TDD. This also negates the need to have a second screen to see my progress, jest tell me if something is added to HTML correctly as expected or not. I can finally program from my bed 100% of the time.

@@ -26,7 +26,34 @@ digraph RanyDays {
          dd[ label = "dd"];
         }
     }
+
+    subgraph getData{
+        cluster=true;
+        label = "getData.js";
+        style=dotted;
+        subgraph GetData{
+            label = "GetData";
+            style=filled
+            getAll[ label = "getAll"];
+            getOne[ label = "getOne"];
+            getSimilar[ label = "getSimilar"];
+        }
+    }
+
+    subgraph products{
+        cluster=true;
+        label = "products.js";
+        style=dotted;
+        showAllProducts;
+        showOneProduct
+        showSimilarProduct
+    }
+
     addLogo -> render [ltail=Header];
     dd -> render [ltail=Footer];
+    getOne -> api [ltail=GetData];
+    getOne -> localStorage;
+    getAll -> localStorage;
+    getSimilar -> localStorage;
     render -> DOMContentLoaded;
 }
