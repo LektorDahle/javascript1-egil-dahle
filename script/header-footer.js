@@ -1,4 +1,4 @@
-class Header {
+export class Header {
     /**
      * 
      * @param {HTMLElement} body 
@@ -7,32 +7,23 @@ class Header {
         this.create = document.createElement.bind(document);
         this.body = body;
         this.header = this.create("header");
-        this.header.innerHTML = ` <nav class="nav-wrapper">
-            <ul>
-                <li>
-                    <a href="./content-overview">
-                        <h2>Jackets</h2>
-                    </a>
-                </li>
-                <li>
-                    <a href="./sizes">
-                        <h2>Size Guide</h2>
-                    </a>
-                </li>
-                <li>
-                    <a href="./about-us">
-                        <h2>Information</h2>
-                    </a>
-                </li>
-                <li>
-                    <a href="./payment">
-                        <img src="./img/icons/cart-lightmode.svg" alt="Cart icon" class="light-theme">
-                        <img src="./img/icons/cart-darkmode.svg" alt="Cart icon" class="dark-theme">
-                        <h2>Cart</h2>
-                    </a>
-                </li>
-            </ul>
-        </nav>
+        this.body.prepend(this.header);
+
+        const nav = this.create("nav");
+        nav.classList.add("nav-wrapper");
+        this.header.appendChild(nav);
+
+        const ul = this.create("ul");
+        this.header.appendChild(nav);
+        nav.appendChild(ul);
+
+        this.addLI(ul, "./content-overview", "Jackets")
+        this.addLI(ul, "./sizes", "Size Guide")
+        this.addLI(ul, "./about-us", "Information")
+        this.addLI(ul, "../payment", "Cart")
+
+
+        this.header.innerHTML = `
         <div class="light-dark-switch-wrapper">
             <h2>LIGHT</h2>
             <label class="theme-switch">
@@ -47,17 +38,17 @@ class Header {
             <img src="./img/icons/hamburger-darkmode.svg" alt="Hamburger icon" class="dark-theme">
         </div>
     </header>`
-        this.body.prepend(this.header);
         this.addLogo("./img/icons/RD-logo-lightmode.svg")
     }
 
     /**
-     * @todo Add functionality to add/change the logo image depending on dark/light mode
+     * Adds (prepends) the logo image to the header
      * @param {string} link 
      */
     addLogo(link) {
         const logoWrapper = this.create("div");
         this.logoLink = this.create("a");
+        this.logoLink.href = "./";
         this.logoImage = this.create("img");
         logoWrapper.classList.add("logo-wrapper")
         logoWrapper.appendChild(this.logoLink);
@@ -66,9 +57,30 @@ class Header {
         this.logoLink.classList.add("logo")
         this.header.prepend(logoWrapper)
     }
+
+    /**
+     * Makes navigation links to the
+     * header navigation menu
+     * @param {HTMLElement} parent
+     * @param {string} url 
+     * @param {string} name 
+     */
+    addLI(parent, url, name) {
+        const li = this.create("li");
+        parent.appendChild(li);
+
+        const a = this.create("a");
+        a.href = url;
+
+        const h2 = this.create("h2");
+        h2.innerText = name;
+
+        a.appendChild(h2);
+        li.appendChild(a);
+    }
 }
 
-class Footer {
+export class Footer {
     /**
      * 
      * @param {HTMLElement} body 

@@ -1,5 +1,4 @@
-//empty/** @jest-environment jsdom */
-//import { jest } from '@jest/globals';
+/** @jest-environment jsdom */
 /** @type {import("./main.js")} */
 import { render } from "./main.js";
 

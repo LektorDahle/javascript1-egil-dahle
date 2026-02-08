@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="44mm"
+   height="44mm"
+   viewBox="0 0 44 44"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.2 (f4327f4, 2025-05-13)"
+   sodipodi:docname="hamburger.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="1.5584423"
+     inkscape:cx="-90.79579"
+     inkscape:cy="66.733302"
+     inkscape:window-width="1920"
+     inkscape:window-height="1057"
+     inkscape:window-x="-8"
+     inkscape:window-y="131"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="opacity:1;fill:#0a3641;stroke-width:0.499998;stroke-linecap:round;paint-order:fill markers stroke"
+       id="rect1"
+       width="44.000004"
+       height="8.8000002"
+       x="-1.6631712e-07"
+       y="1.0221e-07" />
+    <rect
+       style="opacity:1;fill:#0a3641;stroke-width:0.499998;stroke-linecap:round;paint-order:fill markers stroke"
+       id="rect1-2"
+       width="44.000004"
+       height="8.8000002"
+       x="-2.3841858e-06"
+       y="17.6" />
+    <rect
+       style="opacity:1;fill:#0a3641;stroke-width:0.499998;stroke-linecap:round;paint-order:fill markers stroke"
+       id="rect1-23"
+       width="44.000004"
+       height="8.8000002"
+       x="-2.3841858e-06"
+       y="35.200001" />
+  </g>
+</svg>
