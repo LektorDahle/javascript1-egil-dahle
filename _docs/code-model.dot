@@ -1,0 +1,32 @@
+digraph RanyDays {
+    compound=true;
+    api [ label = "Innhold", shape= "cylinder" ];
+    localStorage [ label = "LocalStorage", shape = "folder" ];
+
+    
+    subgraph main{
+        cluster=true;
+        label = "main.js";
+        style=dotted;
+        render [ label = "render" ];
+        DOMContentLoaded [ label = "DOMContentLoaded", shape = "rectangle" ];
+    }
+    subgraph headerFooter{
+        cluster=true;
+        label = "header-footer.js";
+        style=dotted;
+        subgraph Header{
+            label = "Header";
+            style=filled
+            addLogo [ label = "addLogo" ];
+        }
+        subgraph Footer{
+            label = "Footer";
+            style=filled
+         dd[ label = "dd"];
+        }
+    }
+    addLogo -> render [ltail=Header];
+    dd -> render [ltail=Footer];
+    render -> DOMContentLoaded;
+}

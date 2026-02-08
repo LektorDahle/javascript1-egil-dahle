@@ -1,7 +1,7 @@
 import { makeHeaderAndFooter } from "./header-footer.js";
 import { Head } from "./head.js";
 
-function render(){
+export function render(){
     makeHeaderAndFooter();
     new Head();
 }
