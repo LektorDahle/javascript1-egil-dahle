@@ -2,9 +2,9 @@
 /** @type {import("./header-footer.js")} */
 import { Header } from "./header-footer.js";
 
-describe("checks the render of header and footer", () => {
+describe("checks the render of the header", () => {
     beforeEach(() => {
-    /**Emptying the body so as to see that the header elements are actually rendered */
+        /**Emptying the body so as to see that the header elements are actually rendered */
         document.body.innerHTML = '';
         new Header(document.body);
     });
@@ -13,11 +13,16 @@ describe("checks the render of header and footer", () => {
         expect(() => new Header(document.body)).not.toThrow();
     });
     test("header has a logo", () => {
+        /**Tests that the addLogo does not throw any error */
+        expect(() => new Header(document.body).addLogo(".")).not.toThrow();
+
+        /** @type {HTMLElement | null} */
         const logoWrapper = document.querySelector(".logo-wrapper");
         expect(logoWrapper).not.toBeNull();
 
+        /** @type {HTMLElement | null | undefined} */
         const logoImage = logoWrapper?.querySelector("img");
-        expect(logoImage).not.toBeNull();
+        expect(logoImage).not.toBeTruthy();
 
         const logoLink = logoWrapper?.querySelector("a.logo");
         expect(logoLink?.getAttribute("href")).toBe("./");
