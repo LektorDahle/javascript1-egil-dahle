@@ -5,7 +5,9 @@ export class Head {
         this.create = document.createElement.bind(document);
         this.addMeta({ charset: "UTF-8" });
         this.addMeta({ name: "viewport", content: "width=device-width, initial-scale=1.0" });
-        this.addLink({ link: "./style/base.css" })
+        this.addLink({ link: "./style/base.css", rel: "stylesheet" })
+        this.addLink({ link: "./style/header.css", rel: "stylesheet"  })
+        this.addLink({ link: "./style/typography.css", rel: "stylesheet"  })
     }
 
 
