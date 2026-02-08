@@ -1,3 +1,5 @@
+import { getBrowserColor } from "./main.js"
+
 export class Header {
     /**
      * 
@@ -22,31 +24,20 @@ export class Header {
         this.addLI(ul, "./about-us", "Information")
         this.addLI(ul, "../payment", "Cart")
 
-
-    //    this.header.innerHTML = `
-    //    <div class="light-dark-switch-wrapper">
-    //        <h2>LIGHT</h2>
-    //        <label class="theme-switch">
-    //            <input id="theme-toggle" type="checkbox">
-    //            <span class="slider"></span>
-    //        </label>
-    //        <h2>DARK</h2>
-    //    </div>
-    //    <div id="hamburger-menu">
-    //        <input id="navigation-menu-wrapper" type="checkbox">
-    //        <img src="./img/icons/hamburger-lightmode.svg" alt="Hamburger icon" class="light-theme">
-    //        <img src="./img/icons/hamburger-darkmode.svg" alt="Hamburger icon" class="dark-theme">
-    //    </div>
-    //</header>`
-        this.addLogo("./img/icons/RD-logo-lightmode.svg")
+        //    <div id="hamburger-menu">
+        //        <input id="navigation-menu-wrapper" type="checkbox">
+        //        <img src="./img/icons/hamburger-lightmode.svg" alt="Hamburger icon" class="light-theme">
+        //        <img src="./img/icons/hamburger-darkmode.svg" alt="Hamburger icon" class="dark-theme">
+        //    </div>
+        //</header>`
+        this.addLogo()
         this.addThemeButton(this.header);
     }
 
     /**
      * Adds (prepends) the logo image to the header
-     * @param {string} link 
      */
-    addLogo(link) {
+    addLogo() {
         const logoWrapper = this.create("div");
         this.logoLink = this.create("a");
         this.logoLink.href = "./";
@@ -54,7 +45,14 @@ export class Header {
         logoWrapper.classList.add("logo-wrapper")
         logoWrapper.appendChild(this.logoLink);
         this.logoLink.appendChild(this.logoImage);
-        this.logoImage.src = link;
+        let logoLink;
+        if (getBrowserColor()) {
+            logoLink = "./img/icons/RD-logo-lightmode.svg";
+        }
+        else {
+            logoLink = "./img/icons/RD-logo-darkmode.svg";
+        }
+        this.logoImage.src = logoLink;
         this.logoLink.classList.add("logo")
         this.header.prepend(logoWrapper)
     }
@@ -74,7 +72,7 @@ export class Header {
         a.href = url;
 
         const h2 = this.create("h2");
-        h2.textContent  = name;
+        h2.textContent = name;
 
         a.appendChild(h2);
         li.appendChild(a);
@@ -84,7 +82,7 @@ export class Header {
      * Creates the ham
      * @param {HTMLElement} parent 
      */
-    addThemeButton(parent){
+    addThemeButton(parent) {
         const wrapper = this.create("div");
         parent.appendChild(wrapper);
         wrapper.classList.add("light-dark-switch-wrapper")
@@ -95,22 +93,33 @@ export class Header {
 
 
         const label = this.create("label");
-        label.classList.add ("theme-switch");
+        label.classList.add("theme-switch");
         wrapper.append(label);
 
         const h2_dark = this.create("h2");
         wrapper.appendChild(h2_dark);
         h2_dark.textContent = "DARK";
 
-        const input = this.create("input");
-        input.id = "theme-toggle";
-        input.type  = "checkbox";
-        label.appendChild(input);
+        this.input = this.create("input");
+        this.input.id = "theme-toggle";
+        this.input.type = "checkbox";
+        label.appendChild(this.input);
+
+        if (getBrowserColor()) {
+            this.input.checked = true;
+        }
+        else {
+            this.input.checked = true;
+        }
 
         const span = this.create("span");
         span.classList.add("slider");
         label.appendChild(span);
     }
+    /**
+     * 
+     * @returns {boolean}
+     */
 }
 
 export class Footer {

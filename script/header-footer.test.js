@@ -13,11 +13,11 @@ describe("checks the render of the header", () => {
     });
     test("header has a logo", () => {
         /**Tests that the addLogo does not throw any error */
-        expect(() => new Header(document.body).addLogo("./img/icons/RD-logo-lightmode.svg")).not.toThrow();
+        expect(() => new Header(document.body).addLogo()).not.toThrow();
 
         document.body.innerHTML = "";
         new Header(document.body)
-        
+
         /** @type {HTMLElement | null} */
         const logoWrapper = document.querySelector(".logo-wrapper");
         expect(logoWrapper).not.toBeNull();
