@@ -23,21 +23,21 @@ export class Header {
         this.addLI(ul, "../payment", "Cart")
 
 
-        this.header.innerHTML = `
-        <div class="light-dark-switch-wrapper">
-            <h2>LIGHT</h2>
-            <label class="theme-switch">
-                <input id="theme-toggle" type="checkbox">
-                <span class="slider"></span>
-            </label>
-            <h2>DARK</h2>
-        </div>
-        <div id="hamburger-menu">
-            <input id="navigation-menu-wrapper" type="checkbox">
-            <img src="./img/icons/hamburger-lightmode.svg" alt="Hamburger icon" class="light-theme">
-            <img src="./img/icons/hamburger-darkmode.svg" alt="Hamburger icon" class="dark-theme">
-        </div>
-    </header>`
+    //    this.header.innerHTML = `
+    //    <div class="light-dark-switch-wrapper">
+    //        <h2>LIGHT</h2>
+    //        <label class="theme-switch">
+    //            <input id="theme-toggle" type="checkbox">
+    //            <span class="slider"></span>
+    //        </label>
+    //        <h2>DARK</h2>
+    //    </div>
+    //    <div id="hamburger-menu">
+    //        <input id="navigation-menu-wrapper" type="checkbox">
+    //        <img src="./img/icons/hamburger-lightmode.svg" alt="Hamburger icon" class="light-theme">
+    //        <img src="./img/icons/hamburger-darkmode.svg" alt="Hamburger icon" class="dark-theme">
+    //    </div>
+    //</header>`
         this.addLogo("./img/icons/RD-logo-lightmode.svg")
     }
 
@@ -73,7 +73,7 @@ export class Header {
         a.href = url;
 
         const h2 = this.create("h2");
-        h2.innerText = name;
+        h2.textContent  = name;
 
         a.appendChild(h2);
         li.appendChild(a);

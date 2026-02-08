@@ -6,7 +6,6 @@ describe("checks the render of the header", () => {
     beforeEach(() => {
         /**Emptying the body so as to see that the header elements are actually rendered */
         document.body.innerHTML = '';
-        new Header(document.body);
     });
     test("Header-class works", () => {
         /**Tests that the Header class does not throw any errors */
@@ -32,5 +31,17 @@ describe("checks the render of the header", () => {
 
     test("add navigation link", () => {
         expect(() => new Header(document.body).addLI(document.body, "./content", "Content")).not.toThrow();
+
+        const navWrapper = document.querySelector(".nav-wrapper");
+        expect(navWrapper).not.toBeNull();
+
+        const a = document.querySelector(".nav-wrapper a");
+        expect(a).not.toBeNull();
+        expect(a?.getAttribute("href")).not.toBeNull();
+        expect(a?.getAttribute("href")).toBeDefined();
+
+        const h2 = document.querySelector(".nav-wrapper a h2");
+        expect(h2).not.toBeNull();
+        expect(h2?.textContent).not.toBe("");
     });
 });
