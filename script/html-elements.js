@@ -1,6 +1,7 @@
 class MyElement {
     /**
-     * 
+     * MyElement is an base-class for creation and handling of
+     * HTML elemnts, hopefully to make other parts of the code more readable!
      * @param {HTMLElement | MyElement} parent 
      * @param {string} tag 
      */
@@ -12,7 +13,9 @@ class MyElement {
     }
 
     /**
-     * 
+     * appendList is named this because it takes more than one
+     * child to be appended - works like a normal function call
+     * with the children as params
      * @param  {...HTMLElement} children 
      */
     appendList(...children) {
@@ -22,28 +25,37 @@ class MyElement {
     }
 
     /**
+     * This adds a classname to the element
      * @param {string} name
      */
     set class(name) {
         this.element.classList.add(name);
     }
 
+    /**
+      * This returns a string of all the classes of the element
+      */
     get class() {
         return this.element.className;
     }
 
     /**
+      * Sets the id of the element
       * @param {string} idName
       */
     set id(idName) {
         this.element.id = idName;
     }
 
+    /**
+      * Gets the id of the element
+      */
     get id() {
         return this.element.id;
     }
 
     /**
+      * Uses html appendChild in a setter
       * @param {HTMLElement} child
       */
     set append(child) {
@@ -51,6 +63,7 @@ class MyElement {
     }
 
     /**
+      * Uses html prepend in a setter
       * @param {HTMLElement} child
       */
     set prepend(child) {
@@ -58,9 +71,9 @@ class MyElement {
     }
 }
 
-export class Div extends MyElement {
+class Div extends MyElement {
     /**
-     * 
+     * Used to create a div element, takes parent as an argument
      * @param {HTMLElement | MyElement} parent 
      */
     constructor(parent) {
@@ -68,9 +81,9 @@ export class Div extends MyElement {
     }
 }
 
-export class A extends MyElement {
+class A extends MyElement {
     /**
-     * 
+     * Used to create an a element, takse parent and href as an argument
      * @param {HTMLElement | MyElement} parent 
      * @param {string} src
      */
@@ -81,13 +94,14 @@ export class A extends MyElement {
 }
 
 /**
- * 
- * @param {HTMLElement | MyElement} parent 
- * @param {string} src 
- */
+  * Uses the class A to create a new a element
+  * @param {HTMLElement | MyElement} parent 
+  * @param {string} src 
+  */
 export const createA = (parent, src) => new A(parent, src);
+
 /**
- * 
- * @param {HTMLElement | MyElement} parent 
- */
+  * Uses the class Div to create a new element
+  * @param {HTMLElement | MyElement} parent 
+  */
 export const createDiv = (parent) => new Div(parent);
