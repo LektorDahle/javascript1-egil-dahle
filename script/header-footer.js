@@ -1,12 +1,15 @@
 import { getBrowserColor } from "./main.js"
-import { anchor, divider } from "./html-elements.js";
+import { anchor, divider, image } from "./html-elements.js";
 
 class Body {
     /**
+      * Body as a base element for the header and footer
       * @param {string} tag
       */
     constructor(tag) {
-        this.body = document.body;
+        const body = document.body;
+        if (!body) throw new Error("Body missing - document initalization bug, possibly defer missing.");
+        this.body = body
         this.create = document.createElement.bind(document);
         this.mainElement = this.create(tag)
     }
@@ -48,15 +51,10 @@ export class Header extends Body {
         hamburgerInput.id = "navigation-menu-wrapper";
         hamburgerInput.type = "checkbox";
         hamburgerDiv.append = hamburgerInput;
-
-        const hamburgerImgLight = this.create("img");
-        hamburgerImgLight.classList.add("light-theme");
-        const hamburgerImgDark = this.create("img");
-        hamburgerImgDark.classList.add("dark-theme");
-        hamburgerDiv.appendList(hamburgerImgLight, hamburgerImgDark);
-
-        hamburgerImgLight.src = "./img/icons/hamburger-lightmode.svg";
-        hamburgerImgDark.src = "./img/icons/hamburger-darkmode.svg";
+        const hamburgerImgLight = image(hamburgerDiv, "./img/icons/hamburger-lightmode.svg", "Hamburger icon")
+        hamburgerImgLight.class = "light-theme";
+        const hamburgerImgDark = image(hamburgerDiv, "./img/icons/hamburger-darkmode.svg", "Hamburger icon")
+        hamburgerImgDark.class = "dark-theme";
     }
 
     /**
@@ -168,14 +166,10 @@ export class Footer extends Body {
         rightText.style.whiteSpace = "pre-line";
         rightText.textContent = "Mr. Sells, our founder, saw the need for quality mid-range jackets, and decided to make this, now long standing and reputable brand. All content is fictonal - probably.";
 
-        const lightFooterImg = this.create("img");
-        const darkFooterImg = this.create("img");
-        divCenter.appendList(lightFooterImg, darkFooterImg);
-        lightFooterImg.classList.add("light-theme");
-        darkFooterImg.classList.add("dark-theme");
-
-        lightFooterImg.src = "./img/icons/RD-logo-footer-lightmode.svg";
-        darkFooterImg.src = "./img/icons/RD-logo-footer-darkmode.svg";
+        const lightFooterImg = image(divCenter, "./img/icons/RD-logo-footer-lightmode.svg", "Rainy Days footer logo for light-theme")
+        const darkFooterImg = image(divCenter, "./img/icons/RD-logo-footer-darkmode.svg", "Rainy Days footer logo for dark-theme")
+        lightFooterImg.class = "light-theme";
+        darkFooterImg.class = "dark-theme";
     }
 }
 

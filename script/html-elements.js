@@ -93,6 +93,19 @@ class A extends MyElement {
     }
 }
 
+class Img extends MyElement {
+    /**
+      * @param {HTMLElement | MyElement} parent 
+      * @param { string } link
+      * @param { string } alternativeText
+      */
+    constructor(parent, link, alternativeText) {
+        super(parent, "img");
+        /** @type {HTMLImageElement} */(this.element).src = link;
+        /** @type {HTMLImageElement} */(this.element).alt = alternativeText;
+    }
+}
+
 /**
   * Uses the class A to create a new a element
   * @param {HTMLElement | MyElement} parent 
@@ -105,3 +118,10 @@ export const anchor = (parent, src) => new A(parent, src);
   * @param {HTMLElement | MyElement} parent 
   */
 export const divider = (parent) => new Div(parent);
+
+/**
+  * @param {HTMLElement | MyElement} parent
+  *  @param {string} link 
+  *  @param {string} alternativeText 
+  */
+export const image = (parent, link, alternativeText) => new Img(parent, link, alternativeText);
