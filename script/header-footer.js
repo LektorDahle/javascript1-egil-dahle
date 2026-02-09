@@ -1,5 +1,5 @@
 import { getBrowserColor } from "./main.js"
-
+import { Div } from "./html-elements.js";
 export class Header {
     /**
      * 
@@ -32,20 +32,19 @@ export class Header {
          * Update hamburger with JS
          * Currently it is not dissapering when screen size is changed, so that yoy
          */
-        const hamburgerDiv = this.create("div")
+        const hamburgerDiv = new Div(this.header);
         hamburgerDiv.id = "hamburger-menu";
-        this.header.appendChild(hamburgerDiv);
 
         const hamburgerInput = this.create("input");
         hamburgerInput.id = "navigation-menu-wrapper";
         hamburgerInput.type = "checkbox";
-        hamburgerDiv.appendChild(hamburgerInput);
+        hamburgerDiv.append = hamburgerInput;
 
         const hamburgerImgLight = this.create("img");
         hamburgerImgLight.classList.add("light-theme");
         const hamburgerImgDark = this.create("img");
         hamburgerImgDark.classList.add("dark-theme");
-        hamburgerDiv.append(hamburgerImgLight, hamburgerImgDark);
+        hamburgerDiv.appendList(hamburgerImgLight, hamburgerImgDark);
 
         hamburgerImgLight.src = "./img/icons/hamburger-lightmode.svg";
         hamburgerImgDark.src = "./img/icons/hamburger-darkmode.svg";
@@ -55,11 +54,11 @@ export class Header {
      * Adds (prepends) the logo image to the header
      */
     addLogo() {
-        const logoWrapper = this.create("div");
+        const logoWrapper = new Div(this.header);
         this.logoLink = this.create("a");
         this.logoLink.href = "./";
-        logoWrapper.classList.add("logo-wrapper")
-        logoWrapper.appendChild(this.logoLink);
+        logoWrapper.class = "logo-wrapper";
+        logoWrapper.append = this.logoLink;
         this.logoLink.classList.add("logo");
 
         const logoImageDark = this.create("img");
@@ -73,7 +72,6 @@ export class Header {
         logoImageLight.src = "./img/icons/RD-logo-lightmode.svg";
         logoImageLight.classList.add("light-theme");
 
-        this.header.prepend(logoWrapper)
     }
 
     /**
@@ -101,21 +99,20 @@ export class Header {
      * Creates the ham
      */
     addThemeButton() {
-        const wrapper = this.create("div");
-        this.header.appendChild(wrapper);
-        wrapper.classList.add("light-dark-switch-wrapper")
+        const wrapper = new Div(this.header);
+        wrapper.class = "light-dark-switch-wrapper";
 
         const h2_light = this.create("h2");
-        wrapper.appendChild(h2_light);
+        wrapper.append = h2_light;
         h2_light.textContent = "LIGHT";
 
 
         const label = this.create("label");
         label.classList.add("theme-switch");
-        wrapper.append(label);
+        wrapper.append = label;
 
         const h2_dark = this.create("h2");
-        wrapper.appendChild(h2_dark);
+        wrapper.append = h2_dark;
         h2_dark.textContent = "DARK";
 
         this.input = this.create("input");
@@ -151,29 +148,27 @@ export class Footer {
         this.footer = this.create("footer");
         this.body.appendChild(this.footer);
 
-        const divLeft = this.create("div");
-        const divCenter = this.create("div");
-        const divRight = this.create("div");
+        const divLeft = new Div(this.footer);
+        const divCenter = new Div(this.footer);
+        const divRight = new Div(this.footer);
 
-        this.footer.append(divLeft, divCenter, divRight)
-
-        divLeft.classList.add("footer-text");
-        divCenter.classList.add("logo-footer");
-        divRight.classList.add("footer-text");
+        divLeft.class = "footer-text";
+        divCenter.class = "logo-footer";
+        divRight.class = "footer-text";
 
         const leftText = this.create("p");
-        divLeft.appendChild(leftText);
+        divLeft.append = leftText;
         leftText.style.whiteSpace = "pre-line";
         leftText.textContent = "Call us on <SOME PHONE NUMBER>\n Email us on post@rainydays.weather";
 
         const rightText = this.create("p");
-        divRight.appendChild(rightText);
+        divRight.append = rightText;
         rightText.style.whiteSpace = "pre-line";
         rightText.textContent = "Mr. Sells, our founder, saw the need for quality mid-range jackets, and decided to make this, now long standing and reputable brand. All content is fictonal - probably.";
 
         const lightFooterImg = this.create("img");
         const darkFooterImg = this.create("img");
-        divCenter.append(lightFooterImg, darkFooterImg);
+        divCenter.appendList(lightFooterImg, darkFooterImg);
         lightFooterImg.classList.add("light-theme");
         darkFooterImg.classList.add("dark-theme");
 
