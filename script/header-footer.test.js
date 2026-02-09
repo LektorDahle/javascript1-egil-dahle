@@ -9,14 +9,14 @@ describe("checks the render of the header", () => {
     });
     test("Header-class works", () => {
         /**Tests that the Header class does not throw any errors */
-        expect(() => new Header(document.body)).not.toThrow();
+        expect(() => new Header()).not.toThrow();
     });
     test("header has a logo", () => {
         /**Tests that the addLogo does not throw any error */
-        expect(() => new Header(document.body).addLogo()).not.toThrow();
+        expect(() => new Header().addLogo()).not.toThrow();
 
         document.body.innerHTML = "";
-        new Header(document.body)
+        new Header()
 
         /** @type {HTMLElement | null} */
         const logoWrapper = document.querySelector(".logo-wrapper");
@@ -33,10 +33,10 @@ describe("checks the render of the header", () => {
     });
 
     test("add navigation link", () => {
-        expect(() => new Header(document.body).addLI(document.body, "./content", "Content")).not.toThrow();
+        expect(() => new Header().addLI(document.body, "./content", "Content")).not.toThrow();
 
         document.body.innerHTML = "";
-        new Header(document.body)
+        new Header()
 
         const navWrapper = document.querySelector(".nav-wrapper");
         expect(navWrapper).not.toBeNull();
@@ -52,10 +52,10 @@ describe("checks the render of the header", () => {
     });
 
     test("add theme change button", () => {
-        expect(() => new Header(document.body).addThemeButton()).not.toThrow();
+        expect(() => new Header().addThemeButton()).not.toThrow();
 
         document.body.innerHTML = "";
-        new Header(document.body)
+        new Header()
         const navWrapper = document.querySelector(".light-dark-switch-wrapper");
         expect(navWrapper).not.toBeNull();
 

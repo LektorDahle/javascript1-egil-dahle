@@ -98,10 +98,10 @@ class A extends MyElement {
   * @param {HTMLElement | MyElement} parent 
   * @param {string} src 
   */
-export const createA = (parent, src) => new A(parent, src);
+export const anchor = (parent, src) => new A(parent, src);
 
 /**
   * Uses the class Div to create a new element
   * @param {HTMLElement | MyElement} parent 
   */
-export const createDiv = (parent) => new Div(parent);
+export const divider = (parent) => new Div(parent);

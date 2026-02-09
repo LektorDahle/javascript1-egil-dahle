@@ -1,23 +1,32 @@
 import { getBrowserColor } from "./main.js"
-import { createA, createDiv } from "./html-elements.js";
-export class Header {
+import { anchor, divider } from "./html-elements.js";
+
+class Body {
     /**
-     * 
-     * @param {HTMLElement} body 
-     */
-    constructor(body) {
+      * @param {string} tag
+      */
+    constructor(tag) {
+        this.body = document.body;
         this.create = document.createElement.bind(document);
-        this.body = body;
-        this.header = this.create("header");
-        this.body.prepend(this.header);
+        this.mainElement = this.create(tag)
+    }
+}
+
+export class Header extends Body {
+    /**
+     * Creates and handles the header of the body
+     */
+    constructor() {
+        super("header")
+        this.body.prepend(this.mainElement);
         this.addLogo()
 
         const nav = this.create("nav");
         nav.classList.add("nav-wrapper");
-        this.header.appendChild(nav);
+        this.mainElement.appendChild(nav);
 
         const ul = this.create("ul");
-        this.header.appendChild(nav);
+        this.mainElement.appendChild(nav);
         nav.appendChild(ul);
 
         this.addLI(ul, "./content-overview", "Jackets")
@@ -32,7 +41,7 @@ export class Header {
          * Update hamburger with JS
          * Currently it is not dissapering when screen size is changed, so that yoy
          */
-        const hamburgerDiv = createDiv(this.header);
+        const hamburgerDiv = divider(this.mainElement);
         hamburgerDiv.id = "hamburger-menu";
 
         const hamburgerInput = this.create("input");
@@ -54,8 +63,8 @@ export class Header {
      * Adds (prepends) the logo image to the header
      */
     addLogo() {
-        const logoWrapper = createDiv(this.header);
-        const logoLink = createA(logoWrapper, "./");
+        const logoWrapper = divider(this.mainElement);
+        const logoLink = anchor(logoWrapper, "./");
         logoWrapper.class = "logo-wrapper";
         logoLink.class = "logo";
 
@@ -83,7 +92,7 @@ export class Header {
         const li = this.create("li");
         parent.appendChild(li);
 
-        const a = createA(li, url);
+        const a = anchor(li, url);
 
         const h2 = this.create("h2");
         h2.textContent = name;
@@ -95,7 +104,7 @@ export class Header {
      * Creates the ham
      */
     addThemeButton() {
-        const wrapper = createDiv(this.header);
+        const wrapper = divider(this.mainElement);
         wrapper.class = "light-dark-switch-wrapper";
 
         const h2_light = this.create("h2");
@@ -133,20 +142,17 @@ export class Header {
      */
 }
 
-export class Footer {
+export class Footer extends Body {
     /**
-     * 
-     * @param {HTMLElement} body 
+     * Creates and handles the footer of the body
      */
-    constructor(body) {
-        this.create = document.createElement.bind(document);
-        this.body = body;
-        this.footer = this.create("footer");
-        this.body.appendChild(this.footer);
+    constructor() {
+        super("footer")
+        this.body.appendChild(this.mainElement);
 
-        const divLeft = createDiv(this.footer);
-        const divCenter = createDiv(this.footer);
-        const divRight = createDiv(this.footer);
+        const divLeft = divider(this.mainElement);
+        const divCenter = divider(this.mainElement);
+        const divRight = divider(this.mainElement);
 
         divLeft.class = "footer-text";
         divCenter.class = "logo-footer";
@@ -168,14 +174,12 @@ export class Footer {
         lightFooterImg.classList.add("light-theme");
         darkFooterImg.classList.add("dark-theme");
 
-        lightFooterImg.src = "./img/icons/RD-logo-footer-lightmode.svg"
-        darkFooterImg.src = "./img/icons/RD-logo-footer-darkmode.svg"
+        lightFooterImg.src = "./img/icons/RD-logo-footer-lightmode.svg";
+        darkFooterImg.src = "./img/icons/RD-logo-footer-darkmode.svg";
     }
 }
 
 export function makeHeaderAndFooter() {
-    const body = document.body;
-    if (!body) return;
-    new Header(body)
-    new Footer(body)
+    new Header();
+    new Footer();
 }
