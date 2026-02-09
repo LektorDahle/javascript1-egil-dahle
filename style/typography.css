@@ -45,16 +45,25 @@
     .light-theme {
         display: none;
     }
+
     --text-color: var(--text-color-dark);
     --background-color: var(--background-color-dark);
     --footer-bg: var(--footer-bg-dark);
     --bg-tint-color: var(--bg-tint-color-dark);
 }
+
 :root:has(#theme-toggle:not(:checked)) {
     .dark-theme {
         display: none;
     }
 }
+
+body,
+header,
+footer {
+    transition: background-color 0.2s, color 0.2s;
+}
+
 
 h1,
 h2,

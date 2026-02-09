@@ -8,10 +8,6 @@ export function render() {
 document.addEventListener("DOMContentLoaded", render);
 
 export function getBrowserColor() {
-    if (window.matchMedia) {
-        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            return false
-        }
-    }
-    return true
+    if (!window.matchMedia) return true;
+    return window.matchMedia("(prefers-color-scheme: dark)").matches ? false : true;
 }

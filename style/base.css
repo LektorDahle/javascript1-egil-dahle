@@ -21,11 +21,3 @@ body {
     grid-template-rows: auto 1fr auto;
     background-color: var(--background-color);
 }
-
-header {
-    background: red;
-}
-
-footer {
-    background: red;
-}
