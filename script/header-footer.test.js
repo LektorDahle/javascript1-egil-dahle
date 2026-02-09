@@ -72,6 +72,6 @@ describe("checks the render of the header", () => {
 
         const span = document.querySelector(".slider");
         expect(span).not.toBeNull();
-        
+
     });
 });

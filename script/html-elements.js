@@ -83,7 +83,7 @@ class Div extends MyElement {
 
 class A extends MyElement {
     /**
-     * Used to create an a element, takse parent and href as an argument
+     * Used to create an a element, takes parent and href as an argument
      * @param {HTMLElement | MyElement} parent 
      * @param {string} src
      */
@@ -95,6 +95,7 @@ class A extends MyElement {
 
 class Img extends MyElement {
     /**
+      * Used to create an img element, takes parent, link and alt text as arguments
       * @param {HTMLElement | MyElement} parent 
       * @param { string } link
       * @param { string } alternativeText
@@ -108,6 +109,7 @@ class Img extends MyElement {
 
 class P extends MyElement {
     /**
+      * Used to create a new paragraph using parent and text as arguments
       * @param {HTMLElement | MyElement} parent 
       * @param { string } text
       */
@@ -117,7 +119,7 @@ class P extends MyElement {
     }
 
     /** @param {string} text */
-    set whiteSpace(text){
+    set whiteSpace(text) {
         this.element.style.whiteSpace = text;
     }
 }

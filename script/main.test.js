@@ -4,7 +4,7 @@ import { render } from "./main.js";
 
 describe("checks the render function for correct behaviour", () => {
     beforeEach(() => {
-    /**Emptying the document elements that render affects */
+        /**Emptying the document elements that render affects */
         document.body.innerHTML = '';
         document.head.innerHTML = '';
     });
