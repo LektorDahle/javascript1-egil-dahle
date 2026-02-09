@@ -1,5 +1,5 @@
 import { getBrowserColor } from "./main.js"
-import { anchor, divider, image } from "./html-elements.js";
+import { anchor, divider, image, paragraph } from "./html-elements.js";
 
 class Body {
     /**
@@ -156,15 +156,11 @@ export class Footer extends Body {
         divCenter.class = "logo-footer";
         divRight.class = "footer-text";
 
-        const leftText = this.create("p");
-        divLeft.append = leftText;
-        leftText.style.whiteSpace = "pre-line";
-        leftText.textContent = "Call us on <SOME PHONE NUMBER>\n Email us on post@rainydays.weather";
+        const leftText = paragraph(divLeft, "Call us on <SOME PHONE NUMBER>\n Email us on post@rainydays.weather")
+        leftText.whiteSpace = "pre-line";
 
-        const rightText = this.create("p");
-        divRight.append = rightText;
-        rightText.style.whiteSpace = "pre-line";
-        rightText.textContent = "Mr. Sells, our founder, saw the need for quality mid-range jackets, and decided to make this, now long standing and reputable brand. All content is fictonal - probably.";
+        const rightText = paragraph(divRight, "Mr. Sells, our founder, saw the need for quality mid-range jackets, and decided to make this, now long standing and reputable brand. All content is fictonal - probably.");
+        rightText.whiteSpace = "pre-line";
 
         const lightFooterImg = image(divCenter, "./img/icons/RD-logo-footer-lightmode.svg", "Rainy Days footer logo for light-theme")
         const darkFooterImg = image(divCenter, "./img/icons/RD-logo-footer-darkmode.svg", "Rainy Days footer logo for dark-theme")

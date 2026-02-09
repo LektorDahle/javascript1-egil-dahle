@@ -106,6 +106,21 @@ class Img extends MyElement {
     }
 }
 
+class P extends MyElement {
+    /**
+      * @param {HTMLElement | MyElement} parent 
+      * @param { string } text
+      */
+    constructor(parent, text) {
+        super(parent, "p")
+        this.element.textContent = text;
+    }
+
+    /** @param {string} text */
+    set whiteSpace(text){
+        this.element.style.whiteSpace = text;
+    }
+}
 /**
   * Uses the class A to create a new a element
   * @param {HTMLElement | MyElement} parent 
@@ -125,3 +140,9 @@ export const divider = (parent) => new Div(parent);
   *  @param {string} alternativeText 
   */
 export const image = (parent, link, alternativeText) => new Img(parent, link, alternativeText);
+
+/**
+  * @param {HTMLElement | MyElement} parent
+  *  @param {string} text 
+  */
+export const paragraph = (parent, text) => new P(parent, text);
