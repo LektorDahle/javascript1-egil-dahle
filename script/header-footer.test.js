@@ -33,7 +33,7 @@ describe("checks the render of the header", () => {
     });
 
     test("add navigation link", () => {
-        expect(() => new Header().addLI(document.body, "./content", "Content")).not.toThrow();
+        expect(() => new Header().addListItem(document.body, "./content", "Content")).not.toThrow();
 
         document.body.innerHTML = "";
         new Header()

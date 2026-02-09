@@ -122,19 +122,20 @@ class P extends MyElement {
     }
 }
 /**
-  * Uses the class A to create a new a element
+  * Creates a new a element with parent and link as argument
   * @param {HTMLElement | MyElement} parent 
   * @param {string} src 
   */
 export const anchor = (parent, src) => new A(parent, src);
 
 /**
-  * Uses the class Div to create a new element
+  * Creates a new div element with parent as argument
   * @param {HTMLElement | MyElement} parent 
   */
 export const divider = (parent) => new Div(parent);
 
-/**
+/** 
+  * Creates a new img element with parent, image path and alt text as arguments
   * @param {HTMLElement | MyElement} parent
   *  @param {string} link 
   *  @param {string} alternativeText 
@@ -142,6 +143,7 @@ export const divider = (parent) => new Div(parent);
 export const image = (parent, link, alternativeText) => new Img(parent, link, alternativeText);
 
 /**
+  * Creates a new paragraph element with parent and textContent as arguments
   * @param {HTMLElement | MyElement} parent
   *  @param {string} text 
   */

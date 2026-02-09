@@ -32,10 +32,10 @@ export class Header extends Body {
         this.mainElement.appendChild(nav);
         nav.appendChild(ul);
 
-        this.addLI(ul, "./content-overview", "Jackets")
-        this.addLI(ul, "./sizes", "Size Guide")
-        this.addLI(ul, "./about-us", "Information")
-        this.addLI(ul, "../payment", "Cart")
+        this.addListItem(ul, "./content-overview", "Jackets")
+        this.addListItem(ul, "./sizes", "Size Guide")
+        this.addListItem(ul, "./about-us", "Information")
+        this.addListItem(ul, "../payment", "Cart")
 
         this.addThemeButton();
 
@@ -66,17 +66,13 @@ export class Header extends Body {
         logoWrapper.class = "logo-wrapper";
         logoLink.class = "logo";
 
-        const logoImageDark = this.create("img");
-        const logoImageLight = this.create("img");
-        logoLink.appendList(logoImageDark, logoImageLight);
+        const logoImageDark = image(logoLink, "./img/icons/RD-logo-darkmode.svg", "Rainy Days logo for dark-theme");
+        const logoImageLight = image(logoLink, "./img/icons/RD-logo-lightmode.svg", "Rainy Days logo for light-theme");
 
         //Adding dark and light theme logos to the document, so that
         //the "old" system of using CSS to change color theme will work.
-        logoImageDark.src = "./img/icons/RD-logo-darkmode.svg";
-        logoImageDark.classList.add("dark-theme");
-        logoImageLight.src = "./img/icons/RD-logo-lightmode.svg";
-        logoImageLight.classList.add("light-theme");
-
+        logoImageDark.class = "dark-theme";
+        logoImageLight.class = "light-theme";
     }
 
     /**
@@ -86,7 +82,7 @@ export class Header extends Body {
      * @param {string} url 
      * @param {string} name 
      */
-    addLI(parent, url, name) {
+    addListItem(parent, url, name) {
         const li = this.create("li");
         parent.appendChild(li);
 
@@ -99,7 +95,7 @@ export class Header extends Body {
     }
 
     /**
-     * Creates the ham
+     * Creates the theme change button
      */
     addThemeButton() {
         const wrapper = divider(this.mainElement);
@@ -134,10 +130,6 @@ export class Header extends Body {
         span.classList.add("slider");
         label.appendChild(span);
     }
-    /**
-     * 
-     * @returns {boolean}
-     */
 }
 
 export class Footer extends Body {
