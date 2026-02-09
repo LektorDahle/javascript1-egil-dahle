@@ -24,14 +24,31 @@ export class Header {
         this.addLI(ul, "./about-us", "Information")
         this.addLI(ul, "../payment", "Cart")
 
-        //    <div id="hamburger-menu">
-        //        <input id="navigation-menu-wrapper" type="checkbox">
-        //        <img src="./img/icons/hamburger-lightmode.svg" alt="Hamburger icon" class="light-theme">
-        //        <img src="./img/icons/hamburger-darkmode.svg" alt="Hamburger icon" class="dark-theme">
-        //    </div>
-        //</header>`
         this.addLogo()
-        this.addThemeButton(this.header);
+        this.addThemeButton();
+
+        /** 
+         * @todo 
+         * Update hamburger with JS
+         * Currently it is not dissapering when screen size is changed, so that yoy
+         */
+        const hamburgerDiv = this.create("div")
+        hamburgerDiv.id = "hamburger-menu";
+        this.header.appendChild(hamburgerDiv);
+
+        const hamburgerInput = this.create("input");
+        hamburgerInput.id = "navigation-menu-wrapper";
+        hamburgerInput.type = "checkbox";
+        hamburgerDiv.appendChild(hamburgerInput);
+
+        const hamburgerImgLight = this.create("img");
+        hamburgerImgLight.classList.add("light-theme");
+        const hamburgerImgDark = this.create("img");
+        hamburgerImgDark.classList.add("dark-theme");
+        hamburgerDiv.append(hamburgerImgLight, hamburgerImgDark);
+
+        hamburgerImgLight.src = "./img/icons/hamburger-lightmode.svg";
+        hamburgerImgDark.src = "./img/icons/hamburger-darkmode.svg";
     }
 
     /**
@@ -48,12 +65,12 @@ export class Header {
         const logoImageDark = this.create("img");
         const logoImageLight = this.create("img");
         this.logoLink.append(logoImageDark, logoImageLight);
-        
+
         //Adding dark and light theme logos to the document, so that
         //the "old" system of using CSS to change color theme will work.
-        logoImageDark.src  = "./img/icons/RD-logo-darkmode.svg";
+        logoImageDark.src = "./img/icons/RD-logo-darkmode.svg";
         logoImageDark.classList.add("dark-theme");
-        logoImageLight.src  = "./img/icons/RD-logo-lightmode.svg";
+        logoImageLight.src = "./img/icons/RD-logo-lightmode.svg";
         logoImageLight.classList.add("light-theme");
 
         this.header.prepend(logoWrapper)
@@ -82,11 +99,10 @@ export class Header {
 
     /**
      * Creates the ham
-     * @param {HTMLElement} parent 
      */
-    addThemeButton(parent) {
+    addThemeButton() {
         const wrapper = this.create("div");
-        parent.appendChild(wrapper);
+        this.header.appendChild(wrapper);
         wrapper.classList.add("light-dark-switch-wrapper")
 
         const h2_light = this.create("h2");
@@ -154,7 +170,7 @@ export class Footer {
         divRight.appendChild(rightText);
         rightText.style.whiteSpace = "pre-line";
         rightText.textContent = "Mr. Sells, our founder, saw the need for quality mid-range jackets, and decided to make this, now long standing and reputable brand. All content is fictonal - probably.";
-    
+
         const lightFooterImg = this.create("img");
         const darkFooterImg = this.create("img");
         divCenter.append(lightFooterImg, darkFooterImg);
@@ -165,21 +181,6 @@ export class Footer {
         darkFooterImg.src = "./img/icons/RD-logo-footer-darkmode.svg"
     }
 }
-
-
-    //<footer>
-    //    <div class="footer-text">
-    //        <p>Call us on &lt;SOME PHONE NUMBER&gt;<br> Email us on post@rainydays.weather</p>
-    //    </div>
-    //    <div class="logo-footer">
-    //        <img src="./images/icons/RD-logo-footer-version-lightmode.svg" alt="Rainy Days footer logo for light-theme" class="light-theme">
-    //        <img src="./images/icons/RD-logo-footer-version-darkmode.svg" alt="Rainy Days footer logo for dark-theme" class="dark-theme">
-    //    </div>
-    //    <div class="footer-text">
-    //        <p>Mr. Sells, our founder, saw the need for quality mid-range jackets, and decided to
-    //            make this, now long standing and reputable brand. All content is fictonal - probably.</p>
-    //    </div>
-    //</footer>
 
 export function makeHeaderAndFooter() {
     const body = document.body;

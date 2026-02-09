@@ -21,3 +21,28 @@ body {
     grid-template-rows: auto 1fr auto;
     background-color: var(--background-color);
 }
+
+.button-style-main {
+    background: var(--main-cta);
+    padding: .75em 1em;
+    color: var(--text-color);
+    border-radius: var(--border-radius);
+    border: none;
+}
+
+.button-style-main:hover {
+    background: var(--secondary-cta);
+    color: var(--background-color);
+}
+
+input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    inset: 0;
+}

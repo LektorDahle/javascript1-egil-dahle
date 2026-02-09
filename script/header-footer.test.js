@@ -52,7 +52,7 @@ describe("checks the render of the header", () => {
     });
 
     test("add theme change button", () => {
-        expect(() => new Header(document.body).addThemeButton(document.body)).not.toThrow();
+        expect(() => new Header(document.body).addThemeButton()).not.toThrow();
 
         document.body.innerHTML = "";
         new Header(document.body)

@@ -8,6 +8,7 @@ export class Head {
         this.addLink({ link: "./style/base.css", rel: "stylesheet" })
         this.addLink({ link: "./style/header.css", rel: "stylesheet" })
         this.addLink({ link: "./style/footer.css", rel: "stylesheet" })
+        this.addLink({ link: "./style/at-media-rules.css", rel: "stylesheet" })
         this.addLink({ link: "./style/typography.css", rel: "stylesheet" })
     }
 

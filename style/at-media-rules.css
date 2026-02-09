@@ -1,0 +1,37 @@
+@media screen and (width >=1280px) {
+
+    /* Exagerating the padding and margin for wider screens */
+    main>article {
+        margin: clamp(1em, 10vw, 5em) clamp(.2em, 30vw, 10em);
+        padding: clamp(0.2em, 8vw, 3em) clamp(0.2em, 30vw, 10em);
+    }
+}
+
+@media screen and (width <=1280px) {
+
+    /* Removing the in the footer for smaller screen-sizes */
+    .footer-text {
+        display: none;
+    }
+
+    footer {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    /* Removing the dark-light switch for smaller screen-sizes 
+       and moving the nav to a hamburger menu  */
+    .nav-wrapper>ul {
+        display: none
+    }
+
+    .light-dark-switch-wrapper {
+        display: none;
+    }
+
+    #hamburger-menu {
+        display: block;
+        margin-left: auto;
+    }
+}
