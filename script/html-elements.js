@@ -79,3 +79,15 @@ export class A extends MyElement {
         /** @type {HTMLAnchorElement} */(this.element).href = src;
     }
 }
+
+/**
+ * 
+ * @param {HTMLElement | MyElement} parent 
+ * @param {string} src 
+ */
+export const createA = (parent, src) => new A(parent, src);
+/**
+ * 
+ * @param {HTMLElement | MyElement} parent 
+ */
+export const createDiv = (parent) => new Div(parent);

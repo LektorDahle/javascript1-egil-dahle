@@ -1,5 +1,5 @@
 import { getBrowserColor } from "./main.js"
-import { Div, A } from "./html-elements.js";
+import { createA, createDiv } from "./html-elements.js";
 export class Header {
     /**
      * 
@@ -32,7 +32,7 @@ export class Header {
          * Update hamburger with JS
          * Currently it is not dissapering when screen size is changed, so that yoy
          */
-        const hamburgerDiv = new Div(this.header);
+        const hamburgerDiv = createDiv(this.header);
         hamburgerDiv.id = "hamburger-menu";
 
         const hamburgerInput = this.create("input");
@@ -54,8 +54,8 @@ export class Header {
      * Adds (prepends) the logo image to the header
      */
     addLogo() {
-        const logoWrapper = new Div(this.header);
-        const logoLink = new A(logoWrapper, "./");
+        const logoWrapper = createDiv(this.header);
+        const logoLink = createA(logoWrapper, "./");
         logoWrapper.class = "logo-wrapper";
         logoLink.class = "logo";
 
@@ -83,21 +83,19 @@ export class Header {
         const li = this.create("li");
         parent.appendChild(li);
 
-        const a = this.create("a");
-        a.href = url;
+        const a = createA(li, url);
 
         const h2 = this.create("h2");
         h2.textContent = name;
 
-        a.appendChild(h2);
-        li.appendChild(a);
+        a.append = h2;
     }
 
     /**
      * Creates the ham
      */
     addThemeButton() {
-        const wrapper = new Div(this.header);
+        const wrapper = createDiv(this.header);
         wrapper.class = "light-dark-switch-wrapper";
 
         const h2_light = this.create("h2");
@@ -146,9 +144,9 @@ export class Footer {
         this.footer = this.create("footer");
         this.body.appendChild(this.footer);
 
-        const divLeft = new Div(this.footer);
-        const divCenter = new Div(this.footer);
-        const divRight = new Div(this.footer);
+        const divLeft = createDiv(this.footer);
+        const divCenter = createDiv(this.footer);
+        const divRight = createDiv(this.footer);
 
         divLeft.class = "footer-text";
         divCenter.class = "logo-footer";
