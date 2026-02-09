@@ -1,5 +1,5 @@
 import { getBrowserColor } from "./main.js"
-import { Div } from "./html-elements.js";
+import { Div, A } from "./html-elements.js";
 export class Header {
     /**
      * 
@@ -10,6 +10,7 @@ export class Header {
         this.body = body;
         this.header = this.create("header");
         this.body.prepend(this.header);
+        this.addLogo()
 
         const nav = this.create("nav");
         nav.classList.add("nav-wrapper");
@@ -24,7 +25,6 @@ export class Header {
         this.addLI(ul, "./about-us", "Information")
         this.addLI(ul, "../payment", "Cart")
 
-        this.addLogo()
         this.addThemeButton();
 
         /** 
@@ -55,15 +55,13 @@ export class Header {
      */
     addLogo() {
         const logoWrapper = new Div(this.header);
-        this.logoLink = this.create("a");
-        this.logoLink.href = "./";
+        const logoLink = new A(logoWrapper, "./");
         logoWrapper.class = "logo-wrapper";
-        logoWrapper.append = this.logoLink;
-        this.logoLink.classList.add("logo");
+        logoLink.class = "logo";
 
         const logoImageDark = this.create("img");
         const logoImageLight = this.create("img");
-        this.logoLink.append(logoImageDark, logoImageLight);
+        logoLink.appendList(logoImageDark, logoImageLight);
 
         //Adding dark and light theme logos to the document, so that
         //the "old" system of using CSS to change color theme will work.
