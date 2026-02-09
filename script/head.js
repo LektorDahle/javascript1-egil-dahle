@@ -5,11 +5,15 @@ export class Head {
         this.create = document.createElement.bind(document);
         this.addMeta({ charset: "UTF-8" });
         this.addMeta({ name: "viewport", content: "width=device-width, initial-scale=1.0" });
-        this.addLink({ link: "./style/base.css", rel: "stylesheet" })
-        this.addLink({ link: "./style/header.css", rel: "stylesheet" })
-        this.addLink({ link: "./style/footer.css", rel: "stylesheet" })
-        this.addLink({ link: "./style/at-media-rules.css", rel: "stylesheet" })
-        this.addLink({ link: "./style/typography.css", rel: "stylesheet" })
+
+        fetch("./style/0-css-list.json")
+            .then((res) => res.json())
+            .then((styles) => {
+                for (const name in styles) {
+                    const path = styles[name];
+                    this.addLink({ link: path, rel: "stylesheet" })
+                }
+            });
     }
 
 

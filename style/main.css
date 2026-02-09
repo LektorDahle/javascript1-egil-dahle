@@ -1,0 +1,19 @@
+main {
+    width: 100vw;
+    background: var(--background-color);
+    background-image: linear-gradient(var(--bg-tint-color)), url('../img/background/background.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top center;
+}
+
+main>article {
+    margin: clamp(1em, 10vw, 5em) clamp(.2em, 5vw, 20em);
+    padding: clamp(0.2em, 10vw, 7em);
+    background: color-mix(in srgb, var(--background-color), transparent 50%);
+}
+
+.button-wrapper-right {
+    display: flex;
+    flex-direction: row-reverse;
+}
