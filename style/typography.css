@@ -1,5 +1,5 @@
 :root {
-    font-size: clamp(0.8em, 1.5vw, 1.2em);
+    font-size: clamp(0.6em, 1.vw, 1.2em);
 
     /* Fonts */
     --font-header: "Barlow Condensed", sans-serif;
