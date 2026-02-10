@@ -8,7 +8,7 @@ class Body {
       */
     constructor(tag) {
         const body = document.body;
-        if (!body) throw new Error("Body missing - document initalization bug, possibly defer missing.");
+        if (!body) throw new Error("body missing - document initalization bug, possibly defer missing.");
         this.body = body
         this.create = document.createElement.bind(document);
         this.mainElement = this.create(tag)
