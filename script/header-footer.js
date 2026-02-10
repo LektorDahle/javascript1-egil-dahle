@@ -1,4 +1,4 @@
-import { getBrowserColor } from "./main.js"
+import { getBrowserColor } from "./main.js";
 import { anchor, divider, image, paragraph } from "./html-elements.js";
 
 class Body {
@@ -9,9 +9,9 @@ class Body {
     constructor(tag) {
         const body = document.body;
         if (!body) throw new Error("body missing - document initalization bug, possibly defer missing.");
-        this.body = body
+        this.body = body;
         this.create = document.createElement.bind(document);
-        this.mainElement = this.create(tag)
+        this.mainElement = this.create(tag);
     }
 }
 
@@ -20,9 +20,9 @@ export class Header extends Body {
      * Creates and handles the header of the body
      */
     constructor() {
-        super("header")
+        super("header");
         this.body.prepend(this.mainElement);
-        this.addLogo()
+        this.addLogo();
 
         const nav = this.create("nav");
         nav.classList.add("nav-wrapper");
@@ -32,10 +32,10 @@ export class Header extends Body {
         this.mainElement.appendChild(nav);
         nav.appendChild(ul);
 
-        this.addListItem(ul, "./content-overview", "Jackets")
-        this.addListItem(ul, "./sizes", "Size Guide")
-        this.addListItem(ul, "./about-us", "Information")
-        this.addListItem(ul, "../payment", "Cart")
+        this.addListItem(ul, "./content-overview", "Jackets");
+        this.addListItem(ul, "./sizes", "Size Guide");
+        this.addListItem(ul, "./about-us", "Information");
+        this.addListItem(ul, "../payment", "Cart");
 
         this.addThemeButton();
 
@@ -51,9 +51,9 @@ export class Header extends Body {
         hamburgerInput.id = "navigation-menu-wrapper";
         hamburgerInput.type = "checkbox";
         hamburgerDiv.append = hamburgerInput;
-        const hamburgerImgLight = image(hamburgerDiv, "./img/icons/hamburger-lightmode.svg", "Hamburger icon")
+        const hamburgerImgLight = image(hamburgerDiv, "./img/icons/hamburger-lightmode.svg", "Hamburger icon");
         hamburgerImgLight.class = "light-theme";
-        const hamburgerImgDark = image(hamburgerDiv, "./img/icons/hamburger-darkmode.svg", "Hamburger icon")
+        const hamburgerImgDark = image(hamburgerDiv, "./img/icons/hamburger-darkmode.svg", "Hamburger icon");
         hamburgerImgDark.class = "dark-theme";
     }
 
@@ -137,7 +137,7 @@ export class Footer extends Body {
      * Creates and handles the footer of the body
      */
     constructor() {
-        super("footer")
+        super("footer");
         this.body.appendChild(this.mainElement);
 
         const divLeft = divider(this.mainElement);
@@ -148,14 +148,14 @@ export class Footer extends Body {
         divCenter.class = "logo-footer";
         divRight.class = "footer-text";
 
-        const leftText = paragraph(divLeft, "Call us on <SOME PHONE NUMBER>\n Email us on post@rainydays.weather")
+        const leftText = paragraph(divLeft, "Call us on <SOME PHONE NUMBER>\n Email us on post@rainydays.weather");
         leftText.whiteSpace = "pre-line";
 
         const rightText = paragraph(divRight, "Mr. Sells, our founder, saw the need for quality mid-range jackets, and decided to make this, now long standing and reputable brand. All content is fictonal - probably.");
         rightText.whiteSpace = "pre-line";
 
-        const lightFooterImg = image(divCenter, "./img/icons/RD-logo-footer-lightmode.svg", "Rainy Days footer logo for light-theme")
-        const darkFooterImg = image(divCenter, "./img/icons/RD-logo-footer-darkmode.svg", "Rainy Days footer logo for dark-theme")
+        const lightFooterImg = image(divCenter, "./img/icons/RD-logo-footer-lightmode.svg", "Rainy Days footer logo for light-theme");
+        const darkFooterImg = image(divCenter, "./img/icons/RD-logo-footer-darkmode.svg", "Rainy Days footer logo for dark-theme");
         lightFooterImg.class = "light-theme";
         darkFooterImg.class = "dark-theme";
     }

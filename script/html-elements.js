@@ -71,6 +71,7 @@ class MyElement {
     }
 }
 
+
 class Div extends MyElement {
     /**
      * Used to create a div element, takes parent as an argument
@@ -80,6 +81,7 @@ class Div extends MyElement {
         super(parent, "div")
     }
 }
+
 
 class A extends MyElement {
     /**
@@ -92,6 +94,7 @@ class A extends MyElement {
         /** @type {HTMLAnchorElement} */(this.element).href = src;
     }
 }
+
 
 class Img extends MyElement {
     /**
@@ -106,6 +109,7 @@ class Img extends MyElement {
         /** @type {HTMLImageElement} */(this.element).alt = alternativeText;
     }
 }
+
 
 class P extends MyElement {
     /**
@@ -123,6 +127,8 @@ class P extends MyElement {
         this.element.style.whiteSpace = text;
     }
 }
+
+
 /**
   * Creates a new a element with parent and link as argument
   * @param {HTMLElement | MyElement} parent 

@@ -1,5 +1,8 @@
 
 export class Head {
+    /**
+      * Handles content of in the head of document
+      */
     constructor() {
         this.head = document.head;
         this.create = document.createElement.bind(document);
@@ -11,13 +14,14 @@ export class Head {
             .then((styles) => {
                 for (const name in styles) {
                     const path = styles[name];
-                    this.addLink({ link: path, rel: "stylesheet" })
+                    this.addLink({ link: path, rel: "stylesheet" });
                 }
             });
     }
 
 
     /**
+      * Helper to add meta tags to the head
       * @param {Object} options
       * @param {string} [options.charset]
       * @param {string} [options.name]
@@ -39,6 +43,7 @@ export class Head {
 
 
     /**
+      * Helper to add link in head
       * @param {Object} options
       * @param {string} [options.link]
       * @param {string} [options.rel]
