@@ -1,4 +1,4 @@
-import { getBrowserColor } from "./main.js";
+import { getBrowserColor } from "./theme-switch.js";
 import { anchor, divider, image, paragraph } from "./html-elements.js";
 
 class Body {
@@ -125,7 +125,11 @@ export class Header extends Body {
         this.input.id = "theme-toggle";
         this.input.type = "checkbox";
         label.appendChild(this.input);
-
+        this.input.addEventListener("change", () => {
+            const value = localStorage.getItem("theme");
+            if (value === "light") localStorage.setItem("theme", "dark");
+            else localStorage.setItem("theme", "light");
+        });
         if (getBrowserColor()) {
             this.input.checked = false;
         }
