@@ -129,12 +129,8 @@ export class Header extends Body {
             const value = localStorage.getItem("theme");
             localStorage.setItem("theme", value === "light" ? "dark" : "light");
         });
-        if (getBrowserColor()) {
-            this.input.checked = false;
-        }
-        else {
-            this.input.checked = true;
-        }
+        
+        this.input.checked = !getBrowserColor();
 
         const span = this.create("span");
         span.classList.add("slider");
