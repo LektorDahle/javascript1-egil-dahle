@@ -1,3 +1,8 @@
+/**
+ * Returns the theme color choosen, either from localstorage
+ * or from browser color choices
+ * @returns {boolean}
+ */
 export function getBrowserColor() {
     const value = localStorage.getItem("theme");
     if (!value) {

@@ -127,8 +127,7 @@ export class Header extends Body {
         label.appendChild(this.input);
         this.input.addEventListener("change", () => {
             const value = localStorage.getItem("theme");
-            if (value === "light") localStorage.setItem("theme", "dark");
-            else localStorage.setItem("theme", "light");
+            localStorage.setItem("theme", value === "light" ? "dark" : "light");
         });
         if (getBrowserColor()) {
             this.input.checked = false;
