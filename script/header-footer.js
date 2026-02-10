@@ -7,9 +7,7 @@ class Body {
       * @param {string} tag
       */
     constructor(tag) {
-        const body = document.body;
-        if (!body) throw new Error("body missing - document initalization bug, possibly defer missing.");
-        this.body = body;
+        this.body = document.body ?? (() => { throw new Error("body missing - document initalization bug, possibly defer missing."); })();
         this.create = document.createElement.bind(document);
         this.mainElement = this.create(tag);
     }
@@ -22,28 +20,20 @@ export class Header extends Body {
     constructor() {
         super("header");
         this.body.prepend(this.mainElement);
+
         this.addLogo();
-
-        const nav = this.create("nav");
-        nav.classList.add("nav-wrapper");
-        this.mainElement.appendChild(nav);
-
-        const ul = this.create("ul");
-        this.mainElement.appendChild(nav);
-        nav.appendChild(ul);
-
-        this.addListItem(ul, "./content-overview", "Jackets");
-        this.addListItem(ul, "./sizes", "Size Guide");
-        this.addListItem(ul, "./about-us", "Information");
-        this.addListItem(ul, "../payment", "Cart");
-
+        this.createNav();
+        this.createHambuger();
         this.addThemeButton();
+    }
 
-        /** 
-         * @todo 
-         * Update hamburger with JS
-         * Currently it is not dissapering when screen size is changed, so that yoy
-         */
+    /**
+     * Adds the hamburger menu that appares when screen width is less than some pixel value
+     * @todo 
+     * Update hamburger with JS
+     * Currently it is not dissapering when screen size is changed, so that yoy
+     */
+    createHambuger() {
         const hamburgerDiv = divider(this.mainElement);
         hamburgerDiv.id = "hamburger-menu";
 
@@ -57,6 +47,23 @@ export class Header extends Body {
         hamburgerImgDark.class = "dark-theme";
     }
 
+    /**
+     * Adds the navigation menu to the header
+     */
+    createNav() {
+        const nav = this.create("nav");
+        nav.classList.add("nav-wrapper");
+        this.mainElement.appendChild(nav);
+
+        const ul = this.create("ul");
+        this.mainElement.appendChild(nav);
+        nav.appendChild(ul);
+
+        this.addListItem(ul, "./content-overview", "Jackets");
+        this.addListItem(ul, "./sizes", "Size Guide");
+        this.addListItem(ul, "./about-us", "Information");
+        this.addListItem(ul, "../payment", "Cart");
+    }
     /**
      * Adds (prepends) the logo image to the header
      */
@@ -140,24 +147,31 @@ export class Footer extends Body {
         super("footer");
         this.body.appendChild(this.mainElement);
 
+        this.leftDiv();
+        this.centerDiv();
+        this.rightDiv();
+
+    }
+
+    leftDiv(){
         const divLeft = divider(this.mainElement);
-        const divCenter = divider(this.mainElement);
-        const divRight = divider(this.mainElement);
-
         divLeft.class = "footer-text";
-        divCenter.class = "logo-footer";
-        divRight.class = "footer-text";
-
         const leftText = paragraph(divLeft, "Call us on <SOME PHONE NUMBER>\n Email us on post@rainydays.weather");
         leftText.whiteSpace = "pre-line";
-
-        const rightText = paragraph(divRight, "Mr. Sells, our founder, saw the need for quality mid-range jackets, and decided to make this, now long standing and reputable brand. All content is fictonal - probably.");
-        rightText.whiteSpace = "pre-line";
-
+    }
+    centerDiv(){
+        const divCenter = divider(this.mainElement);
+        divCenter.class = "logo-footer";
         const lightFooterImg = image(divCenter, "./img/icons/RD-logo-footer-lightmode.svg", "Rainy Days footer logo for light-theme");
         const darkFooterImg = image(divCenter, "./img/icons/RD-logo-footer-darkmode.svg", "Rainy Days footer logo for dark-theme");
         lightFooterImg.class = "light-theme";
         darkFooterImg.class = "dark-theme";
+    }
+    rightDiv(){
+        const divRight = divider(this.mainElement);
+        divRight.class = "footer-text";
+        const rightText = paragraph(divRight, "Mr. Sells, our founder, saw the need for quality mid-range jackets, and decided to make this, now long standing and reputable brand. All content is fictonal - probably.");
+        rightText.whiteSpace = "pre-line";
     }
 }
 
