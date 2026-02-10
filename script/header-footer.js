@@ -31,7 +31,7 @@ export class Header extends Body {
      * Adds the hamburger menu that appares when screen width is less than some pixel value
      * @todo 
      * Update hamburger with JS
-     * Currently it is not dissapering when screen size is changed, so that yoy
+     * Currently it is not disappearing when screen size is changed, so that yoy
      */
     createHambuger() {
         const hamburgerDiv = divider(this.mainElement);
@@ -153,13 +153,13 @@ export class Footer extends Body {
 
     }
 
-    leftDiv(){
+    leftDiv() {
         const divLeft = divider(this.mainElement);
         divLeft.class = "footer-text";
         const leftText = paragraph(divLeft, "Call us on <SOME PHONE NUMBER>\n Email us on post@rainydays.weather");
         leftText.whiteSpace = "pre-line";
     }
-    centerDiv(){
+    centerDiv() {
         const divCenter = divider(this.mainElement);
         divCenter.class = "logo-footer";
         const lightFooterImg = image(divCenter, "./img/icons/RD-logo-footer-lightmode.svg", "Rainy Days footer logo for light-theme");
@@ -167,7 +167,7 @@ export class Footer extends Body {
         lightFooterImg.class = "light-theme";
         darkFooterImg.class = "dark-theme";
     }
-    rightDiv(){
+    rightDiv() {
         const divRight = divider(this.mainElement);
         divRight.class = "footer-text";
         const rightText = paragraph(divRight, "Mr. Sells, our founder, saw the need for quality mid-range jackets, and decided to make this, now long standing and reputable brand. All content is fictonal - probably.");
