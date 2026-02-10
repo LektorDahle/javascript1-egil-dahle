@@ -129,7 +129,7 @@ export class Header extends Body {
             const value = localStorage.getItem("theme");
             localStorage.setItem("theme", value === "light" ? "dark" : "light");
         });
-        
+
         this.input.checked = !getBrowserColor();
 
         const span = this.create("span");

@@ -16,6 +16,8 @@
         "editor.formatOnPaste": true
     },
     "extensions": {
-        "recommendations": ["usernamehw.errorlens"]
+        "recommendations": [
+            "usernamehw.errorlens"
+        ]
     }
 }
