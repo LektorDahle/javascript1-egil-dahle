@@ -1,33 +1,34 @@
-import { LoginScreen } from "./loginScreen.js";
-import { NewUserScreen } from "./newUserScreen.js";
-import { MainPage } from "./mainpage.js";
-function visSkjerm(skjerm) {
-    switch (skjerm) {
-        case "login":
-            new LoginScreen().render();
+/**
+ * 
+ * @param {string} screen 
+ */
+function selectScreen(screen) {
+    switch (screen) {
+        case "sizesScreen":
+            //
             break;
-        case "ny-bruker":
-            new NewUserScreen().render();
+        case "itemScreen":
+            //
             break;
-        case "hovedside":
-            new MainPage().render();
+        case "frontScreen":
+            //
             break;
         default:
-            new LoginScreen().render();
+            //frontScreen
     }
 }
 document.addEventListener("DOMContentLoaded", () => {
-    const skjerm = localStorage.getItem("skjerm");
-    if (skjerm) {
-        window.history.replaceState({ skjerm }, "", "");
-        visSkjerm(skjerm);
+    const screen = localStorage.getItem("screen");
+    if (screen) {
+        window.history.replaceState({ screen }, "", "");
+        selectScreen(screen);
     }
     else {
-        visSkjerm("login");
+        selectScreen("frontScreen");
     }
 });
-window.addEventListener("popstate", (e) => {
-    const skjerm = e.state?.skjerm || "login";
-    localStorage.setItem("skjerm", skjerm);
-    visSkjerm(skjerm);
+window.addEventListener("popstate", (event) => {
+    const screen = event.state?.screen || "frontScreen";
+    localStorage.setItem("skjerm", screen);
+    selectScreen(screen);
 });
