@@ -1,5 +1,6 @@
 import { getBrowserColor } from "./theme-switch.js";
 import { anchor, divider, image, paragraph } from "./html-elements.js";
+import { selectScreen } from "./main.js";
 
 class Body {
     /**
@@ -87,7 +88,7 @@ export class Header extends Body {
         this.mainElement.appendChild(this.nav);
         this.nav.appendChild(ul);
 
-        this.addListItem(ul, "./content-overview", "Jackets");
+        this.addListItem(ul, selectScreen("jackets"), "Jackets");
         this.addListItem(ul, "./sizes", "Size Guide");
         this.addListItem(ul, "./about-us", "Information");
         this.addListItem(ul, "../payment", "Cart");
@@ -114,7 +115,7 @@ export class Header extends Body {
      * Makes navigation links to the
      * header navigation menu
      * @param {HTMLElement} parent
-     * @param {string} url 
+     * @callback url 
      * @param {string} name 
      */
     addListItem(parent, url, name) {

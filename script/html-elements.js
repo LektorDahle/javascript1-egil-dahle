@@ -130,6 +130,26 @@ class P extends MyElement {
 
 
 /**
+ * @callback AnyFn
+ * @returns {unknown}
+ */
+class Button extends MyElement {
+    /**
+      * Used to create a new paragraph using parent and text as arguments
+      * @param {HTMLElement | MyElement} parent 
+      * @param {string} text 
+      * @param {AnyFn} onclick
+      * @param {...unknown} args
+      */
+    constructor(parent, text, onclick, ...args) {
+        super(parent, "button")
+        this.element.textContent = text;
+        this.element.onclick = () => { /** @type {any} */ (onclick)(...args); }
+    }
+
+}
+
+/**
   * Creates a new a element with parent and link as argument
   * @param {HTMLElement | MyElement} parent 
   * @param {string} src 
