@@ -8,10 +8,10 @@ export function getBrowserColor() {
     if (value) {
         return value === "light" ? true : false;
     }
+    localStorage.setItem("theme", "dark");
     if (!window.matchMedia) {
         localStorage.setItem("theme", "light");
         return true;
     }
-    localStorage.setItem("theme", "dark");
     return window.matchMedia("(prefers-color-scheme: dark)").matches ? false : true;
 }

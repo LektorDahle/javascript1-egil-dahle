@@ -33,7 +33,7 @@ export class Header extends Body {
      * Update hamburger with JS
      * Currently it is not disappearing when screen size is changed, so that yoy
      */
-    createHambuger() {
+    createHambugerOLD() {
         const hamburgerDiv = divider(this.mainElement);
         hamburgerDiv.id = "hamburger-menu";
 
@@ -47,17 +47,45 @@ export class Header extends Body {
         hamburgerImgDark.class = "dark-theme";
     }
 
+    createHambuger() {
+        const hamburgerDiv = divider(this.mainElement);
+        hamburgerDiv.id = "hamburger-menu";
+
+        const hamburgerInput = this.create("button");
+        hamburgerInput.id = "navigation-menu-wrapper";
+        hamburgerDiv.append = hamburgerInput;
+        const hamburgerImgLight = image(hamburgerInput, "./img/icons/hamburger-lightmode.svg", "Hamburger icon");
+        hamburgerImgLight.class = "light-theme";
+        const hamburgerImgDark = image(hamburgerInput, "./img/icons/hamburger-darkmode.svg", "Hamburger icon");
+        hamburgerImgDark.class = "dark-theme";
+        hamburgerInput.onclick = () => {
+            this.hamburgerActiveState();
+        }
+
+    }
+    hamburgerActiveState() {
+        const nav = this.nav;
+        if (!nav) return false;
+        const state = nav.classList.contains("hamburger-active-state");
+        if (state) {
+            nav.classList.remove("hamburger-active-state");
+            return true
+        }
+        nav.classList.add("hamburger-active-state")
+        return false
+    }
+
     /**
      * Adds the navigation menu to the header
      */
     createNav() {
-        const nav = this.create("nav");
-        nav.classList.add("nav-wrapper");
-        this.mainElement.appendChild(nav);
+        this.nav = this.create("nav");
+        this.nav.classList.add("nav-wrapper");
+        this.mainElement.appendChild(this.nav);
 
         const ul = this.create("ul");
-        this.mainElement.appendChild(nav);
-        nav.appendChild(ul);
+        this.mainElement.appendChild(this.nav);
+        this.nav.appendChild(ul);
 
         this.addListItem(ul, "./content-overview", "Jackets");
         this.addListItem(ul, "./sizes", "Size Guide");
