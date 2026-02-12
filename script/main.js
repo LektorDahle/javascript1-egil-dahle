@@ -8,6 +8,16 @@ import { sizesPage } from "./pages/sizes.js"
  * @param {string} screen 
  */
 export function selectScreen(screen) {
+    localStorage.setItem("screen", screen);
+    history.pushState({ screen }, "", "");
+    setScreen(screen);
+}
+
+/**
+ * 
+ * @param {string} screen 
+ */
+function setScreen(screen) {
     const main = document.getElementsByTagName("main")[0] || alert("Could not render page!");
     main.innerHTML = ""
     switch (screen) {
@@ -24,25 +34,27 @@ export function selectScreen(screen) {
         //frontScreen
     }
 }
+
+
 document.addEventListener("DOMContentLoaded", () => {
+    render()
     const screen = localStorage.getItem("screen");
     if (screen) {
         window.history.replaceState({ screen }, "", "");
-        selectScreen(screen);
+        setScreen(screen);
     }
     else {
-        selectScreen("frontScreen");
+        setScreen("frontScreen");
     }
 });
+
 window.addEventListener("popstate", (event) => {
     const screen = event.state?.screen || "frontScreen";
-    localStorage.setItem("skjerm", screen);
-    selectScreen(screen);
+    localStorage.setItem("screen", screen);
+    setScreen(screen);
 });
-
 
 export function render() {
     makeHeaderAndFooter();
     new Head();
 }
-document.addEventListener("DOMContentLoaded", render);
