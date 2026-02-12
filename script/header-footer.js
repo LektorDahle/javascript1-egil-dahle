@@ -73,10 +73,11 @@ export class Header extends Body {
         const ul = this.create("ul");
         this.mainElement.appendChild(this.nav);
         this.nav.appendChild(ul);
-
-        this.addListItem(ul, "Jackets", "jackets");
-        this.addListItem(ul, "Size Guide", "sizes");
-        this.addListItem(ul, "Information", "about");
+        
+        this.addListItem(ul, "Jackets", "frontScreen");
+        this.addListItem(ul, "Size Guide", "sizesScreen");
+        this.addListItem(ul, "Shipping", "shipping");
+        this.addListItem(ul, "About Us", "about");
         this.addListItem(ul, "Cart", "cart");
     }
     /**

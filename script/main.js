@@ -1,20 +1,23 @@
 import { makeHeaderAndFooter } from "./header-footer.js";
 import { Head } from "./head.js";
+import { mainPage } from "./pages/home.js"
+import { sizesPage } from "./pages/sizes.js"
 
 /**
  * 
  * @param {string} screen 
  */
 export function selectScreen(screen) {
-    console.log(screen)
+    const main = document.getElementsByTagName("main")[0] || alert("Could not render page!");
+    main.innerHTML = ""
     switch (screen) {
-        case "sizesScreen":
-            //
-            break;
-        case "itemScreen":
-            //
-            break;
         case "frontScreen":
+            mainPage()
+            break;
+        case "sizesScreen":
+            sizesPage()
+            break;
+        case "stuffScreen":
             //
             break;
         default:
