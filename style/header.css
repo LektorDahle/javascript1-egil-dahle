@@ -36,15 +36,16 @@ ul {
     justify-content: space-between;
 }
 
-li>a {
+.headerNavButton {
     display: inline-flex;
     align-items: center;
     gap: 0.5em;
     padding: .75em 1.5em;
     text-decoration: none;
+    cursor: pointer;
 }
 
-li>a:hover {
+.headerNavButton:hover {
     background-image: radial-gradient(ellipse at center,
             color-mix(in srgb, var(--text-color), transparent 70%) 0%,
             transparent 80%);
@@ -53,7 +54,7 @@ li>a:hover {
     background-position: 50% 90%;
 }
 
-li>a img {
+.headerNavButton img {
     display: block;
     height: 1.2em;
 }

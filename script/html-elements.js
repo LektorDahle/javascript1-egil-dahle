@@ -124,6 +124,7 @@ class P extends MyElement {
 
     /** @param {string} text */
     set whiteSpace(text) {
+
         this.element.style.whiteSpace = text;
     }
 }
@@ -131,6 +132,7 @@ class P extends MyElement {
 
 /**
  * @callback AnyFn
+ * @param {...any} args
  * @returns {unknown}
  */
 class Button extends MyElement {
@@ -142,7 +144,7 @@ class Button extends MyElement {
       * @param {...unknown} args
       */
     constructor(parent, text, onclick, ...args) {
-        super(parent, "button")
+        super(parent, "button");
         this.element.textContent = text;
         this.element.onclick = () => { /** @type {any} */ (onclick)(...args); }
     }
@@ -176,3 +178,13 @@ export const image = (parent, link, alternativeText) => new Img(parent, link, al
   *  @param {string} text 
   */
 export const paragraph = (parent, text) => new P(parent, text);
+
+/**
+ * 
+ * @param {HTMLElement | MyElement} parent 
+ * @param {string} text 
+ * @param {AnyFn} AnyFunction 
+ * @param  {...any} args 
+ * @returns 
+ */
+export const button = (parent, text, AnyFunction, ...args) => new Button(parent, text, AnyFunction, ...args);

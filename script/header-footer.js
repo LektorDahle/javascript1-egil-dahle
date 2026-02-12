@@ -1,5 +1,5 @@
 import { getBrowserColor } from "./theme-switch.js";
-import { anchor, divider, image, paragraph } from "./html-elements.js";
+import { anchor, divider, image, paragraph, button } from "./html-elements.js";
 import { selectScreen } from "./main.js";
 
 class Body {
@@ -34,20 +34,6 @@ export class Header extends Body {
      * Update hamburger with JS
      * Currently it is not disappearing when screen size is changed, so that yoy
      */
-    createHambugerOLD() {
-        const hamburgerDiv = divider(this.mainElement);
-        hamburgerDiv.id = "hamburger-menu";
-
-        const hamburgerInput = this.create("input");
-        hamburgerInput.id = "navigation-menu-wrapper";
-        hamburgerInput.type = "checkbox";
-        hamburgerDiv.append = hamburgerInput;
-        const hamburgerImgLight = image(hamburgerDiv, "./img/icons/hamburger-lightmode.svg", "Hamburger icon");
-        hamburgerImgLight.class = "light-theme";
-        const hamburgerImgDark = image(hamburgerDiv, "./img/icons/hamburger-darkmode.svg", "Hamburger icon");
-        hamburgerImgDark.class = "dark-theme";
-    }
-
     createHambuger() {
         const hamburgerDiv = divider(this.mainElement);
         hamburgerDiv.id = "hamburger-menu";
@@ -88,10 +74,10 @@ export class Header extends Body {
         this.mainElement.appendChild(this.nav);
         this.nav.appendChild(ul);
 
-        this.addListItem(ul, selectScreen("jackets"), "Jackets");
-        this.addListItem(ul, "./sizes", "Size Guide");
-        this.addListItem(ul, "./about-us", "Information");
-        this.addListItem(ul, "../payment", "Cart");
+        this.addListItem(ul, "Jackets", "jackets");
+        this.addListItem(ul, "Size Guide", "sizes");
+        this.addListItem(ul, "Information", "about");
+        this.addListItem(ul, "Cart", "cart");
     }
     /**
      * Adds (prepends) the logo image to the header
@@ -115,19 +101,16 @@ export class Header extends Body {
      * Makes navigation links to the
      * header navigation menu
      * @param {HTMLElement} parent
-     * @callback url 
      * @param {string} name 
+     * @param {string} page 
      */
-    addListItem(parent, url, name) {
+    addListItem(parent, name, page) {
         const li = this.create("li");
         parent.appendChild(li);
 
-        const a = anchor(li, url);
+        const navigationButton = button(li, name, selectScreen,  page);
 
-        const h2 = this.create("h2");
-        h2.textContent = name;
-
-        a.append = h2;
+        navigationButton.class = "headerNavButton";
     }
 
     /**
@@ -207,3 +190,4 @@ export function makeHeaderAndFooter() {
     new Header();
     new Footer();
 }
+

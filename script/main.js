@@ -6,6 +6,7 @@ import { Head } from "./head.js";
  * @param {string} screen 
  */
 export function selectScreen(screen) {
+    console.log(screen)
     switch (screen) {
         case "sizesScreen":
             //
@@ -17,7 +18,7 @@ export function selectScreen(screen) {
             //
             break;
         default:
-            //frontScreen
+        //frontScreen
     }
 }
 document.addEventListener("DOMContentLoaded", () => {
