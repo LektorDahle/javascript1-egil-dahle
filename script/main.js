@@ -1,5 +1,5 @@
 import { makeHeaderAndFooter } from "./header-footer.js";
-import { Head } from "./head.js";
+//import { Head } from "./head.js";
 import { mainPage } from "./pages/home.js"
 import { sizesPage } from "./pages/sizes.js"
 
@@ -56,5 +56,5 @@ window.addEventListener("popstate", (event) => {
 
 export function render() {
     makeHeaderAndFooter();
-    new Head();
+    //new Head();
 }
