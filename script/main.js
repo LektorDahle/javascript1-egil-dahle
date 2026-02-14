@@ -8,6 +8,7 @@ import { sizesPage } from "./pages/sizes.js"
  * @param {string} screen 
  */
 export function selectScreen(screen) {
+    history.replaceState(null, "", window.location.pathname + window.location.search);
     localStorage.setItem("screen", screen);
     history.pushState({ screen }, "", "");
     setScreen(screen);
