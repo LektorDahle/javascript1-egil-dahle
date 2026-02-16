@@ -4,6 +4,18 @@ export function mainPage() {
     main.textContent = "Yo";
 }
 
-export class MainContentPage{
+export class MainContentPage {
 
+    async getAllData() {
+        try {
+            const res = await fetch("https://v2.api.noroff.dev/rainy-days");
+            if (!res.ok){
+                throw new Error(res.statusText);
+            }
+            return res.json();
+        } catch (err) {
+            console.log(err);
+            throw err;
+        }
+    }
 }
