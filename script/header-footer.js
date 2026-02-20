@@ -29,10 +29,7 @@ export class Header extends Body {
     }
 
     /**
-     * Adds the hamburger menu that appares when screen width is less than some pixel value
-     * @todo 
-     * Update hamburger with JS
-     * Currently it is not disappearing when screen size is changed, so that yoy
+     *
      */
     createHambuger() {
         const hamburgerDiv = divider(this.mainElement);
@@ -48,8 +45,14 @@ export class Header extends Body {
         hamburgerInput.onclick = () => {
             this.hamburgerActiveState();
         }
-
+        this.mainElement.onmouseleave = () => this.nav?.classList.remove("hamburger-active-state");
     }
+
+    /**
+     * This function activates or deactivates the hamburger view state, and
+     * returns false if the hamburger menu is now hidden for some reason.
+     * @returns {boolean}
+     */
     hamburgerActiveState() {
         const nav = this.nav;
         if (!nav) return false;
@@ -73,7 +76,7 @@ export class Header extends Body {
         const ul = this.create("ul");
         this.mainElement.appendChild(this.nav);
         this.nav.appendChild(ul);
-        
+
         this.addListItem(ul, "Jackets", "frontScreen");
         this.addListItem(ul, "Size Guide", "sizesScreen");
         this.addListItem(ul, "Shipping", "shipping");
@@ -109,7 +112,7 @@ export class Header extends Body {
         const li = this.create("li");
         parent.appendChild(li);
 
-        const navigationButton = button(li, name, selectScreen,  page);
+        const navigationButton = button(li, name, selectScreen, page);
 
         navigationButton.class = "headerNavButton";
     }

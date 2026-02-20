@@ -2,7 +2,7 @@ import { divider, paragraph } from "../html-elements.js";
 
 
 export function mainPage() {
-    window.location.hash = "mainpage"; // const screen = location.hash.slice(1); reads the url
+    //window.location.hash = "mainpage"; // const screen = location.hash.slice(1); reads the url
     const main = document.getElementsByTagName("main")[0] || alert("Could not render page!");
     new MainContentPage(main);
 }

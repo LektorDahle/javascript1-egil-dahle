@@ -80,6 +80,14 @@ class Div extends MyElement {
     constructor(parent) {
         super(parent, "div")
     }
+
+    /**
+     * 
+     * @param {Node} param 
+     */
+    contains(param){
+        return this.element.contains(param)
+    }
 }
 
 
