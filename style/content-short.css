@@ -9,6 +9,11 @@
     padding: 1em;
     box-shadow: 1px 2px 4px color-mix(in srgb, var(--background-color), transparent 50%);
     cursor: pointer;
+    font-family: var(--font-header);
+    font-weight: var(--font-header-weight);
+    font-style: var(--font-header-style);
+    font-size: 1.rem;
+    z-index: 10;
 }
 
 .content-short>img {

@@ -21,11 +21,11 @@ export class MainContentPage {
 
     async renderJackets() {
         const allData = await this.getAllData();
-        //this.main.innerHTML = JSON.stringify(allData.data[1].image.url);
         allData.data.forEach((/**@type {object} */d) => {
             this.makeJacketCard(d)
         })
     }
+
     /**
      * 
      * @param {*} data 
@@ -34,7 +34,9 @@ export class MainContentPage {
         const contentWrapper = divider(this.main);
         contentWrapper.class = "content-short";
         image(contentWrapper, data.image.url, data.image.alt)
-        //contentWrapper.element.innerHTML = data.image.alt;
+        const text = divider(contentWrapper);
+        text.element.innerHTML = "ADD TO CART"
+        text.class = "button-style-main"
     }
 
     async getAllData() {
