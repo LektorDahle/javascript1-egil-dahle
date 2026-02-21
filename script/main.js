@@ -9,7 +9,7 @@ import { jacketPage } from "./pages/jacket.js"
  * @param {string} screen 
  */
 export function selectScreen(screen) {
-    history.replaceState(null, "", window.location.pathname + window.location.search);
+    history.replaceState({ screen }, "", window.location.pathname + window.location.search);
     localStorage.setItem("screen", screen);
     history.pushState({ screen }, "", "");
     setScreen(screen);
@@ -61,7 +61,14 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 window.addEventListener("popstate", (event) => {
-    const screen = event.state?.screen || "frontScreen";
+    let screen = event.state?.screen;
+    if (!screen) {
+        if (window.location.hash) {
+            screen = localStorage.getItem("screen") || "frontScreen";
+        } else {
+            screen = "frontScreen";
+        }
+    }
     localStorage.setItem("screen", screen);
     setScreen(screen);
 });
