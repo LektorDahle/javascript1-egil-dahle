@@ -20,6 +20,7 @@ export function selectScreen(screen) {
  */
 function setScreen(screen) {
     const main = document.getElementsByTagName("main")[0] || alert("Could not render page!");
+    main.id = "";
     main.innerHTML = ""
     switch (screen) {
         case "frontScreen":

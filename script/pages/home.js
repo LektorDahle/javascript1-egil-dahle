@@ -1,4 +1,4 @@
-import { divider, paragraph } from "../html-elements.js";
+import { divider, paragraph, image } from "../html-elements.js";
 
 
 export function mainPage() {
@@ -14,13 +14,27 @@ export class MainContentPage {
      */
     constructor(main) {
         this.main = main;
+        this.main.id = "content";
         this.renderJackets();
 
     }
 
     async renderJackets() {
         const allData = await this.getAllData();
-        this.main.innerHTML = JSON.stringify(allData);
+        //this.main.innerHTML = JSON.stringify(allData.data[1].image.url);
+        allData.data.forEach((/**@type {object} */d) => {
+            this.makeJacketCard(d)
+        })
+    }
+    /**
+     * 
+     * @param {*} data 
+     */
+    makeJacketCard(data) {
+        const contentWrapper = divider(this.main);
+        contentWrapper.class = "content-short";
+        image(contentWrapper, data.image.url, data.image.alt)
+        //contentWrapper.element.innerHTML = data.image.alt;
     }
 
     async getAllData() {

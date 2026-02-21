@@ -1,0 +1,17 @@
+#content {
+    padding: 2em clamp(1em, 20vw, 20em);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 3em;
+    flex-wrap: wrap;
+
+    .content-short {
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .content-short:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 10px color-mix(in srgb, var(--background-color-dark), transparent 50%);
+    }
+}

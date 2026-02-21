@@ -1,0 +1,35 @@
+.content-short {
+    position: relative;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 300px;
+    height: 350px;
+    background: color-mix(in srgb, var(--background-color), transparent 50%);
+    border-radius: var(--border-radius);
+    padding: 1em;
+    box-shadow: 1px 2px 4px color-mix(in srgb, var(--background-color), transparent 50%);
+    cursor: pointer;
+}
+
+.content-short>img {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 250px;
+}
+
+.content-short>p {
+    position: absolute;
+    top: 5%;
+    left: 10%;
+    background: var(--secondary-cta);
+    padding: .25em .75em;
+    border-radius: 5em;
+}
+
+.content-short>div {
+    position: absolute;
+    bottom: 5%;
+    right: 10%;
+}
