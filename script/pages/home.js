@@ -58,6 +58,11 @@ export class MainContentPage {
      */
     showErrorOnScreen(err) {
         const errorDiv = divider(this.main);
-        paragraph(errorDiv, err);
+        const errorText = "We ran into som bad weather and are unable to show you any of our cool jackets. Please try again later."
+        const theError = paragraph(errorDiv, errorText);
+        theError.element.style.color = "red";
+        theError.element.style.fontSize = "3rem";
+        theError.element.style.textAlign = "center";
+        throw(err)
     }
 }
