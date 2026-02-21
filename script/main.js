@@ -2,6 +2,7 @@ import { makeHeaderAndFooter } from "./header-footer.js";
 //import { Head } from "./head.js";
 import { mainPage } from "./pages/home.js"
 import { sizesPage } from "./pages/sizes.js"
+import { jacketPage } from "./pages/jacket.js"
 
 /**
  * 
@@ -26,20 +27,29 @@ function setScreen(screen) {
         case "frontScreen":
             mainPage()
             break;
-        case "sizesScreen":
+        case "sizeScreen":
             sizesPage()
             break;
-        case "stuffScreen":
-            //
+        case "jacket":
+            jacketPage()
+            break;
+        case "shipping":
+            jacketPage()
+            break;
+        case "about":
+            jacketPage()
+            break;
+        case "cart":
+            jacketPage()
             break;
         default:
-        //frontScreen
+            mainPage();
     }
 }
 
 
 document.addEventListener("DOMContentLoaded", () => {
-    render()
+    makeHeaderAndFooter();
     const screen = localStorage.getItem("screen");
     if (screen) {
         window.history.replaceState({ screen }, "", "");
@@ -55,8 +65,3 @@ window.addEventListener("popstate", (event) => {
     localStorage.setItem("screen", screen);
     setScreen(screen);
 });
-
-export function render() {
-    makeHeaderAndFooter();
-    //new Head();
-}

@@ -72,13 +72,11 @@ export class Header extends Body {
         this.nav = this.create("nav");
         this.nav.classList.add("nav-wrapper");
         this.mainElement.appendChild(this.nav);
-
         const ul = this.create("ul");
         this.mainElement.appendChild(this.nav);
         this.nav.appendChild(ul);
-
         this.addListItem(ul, "Jackets", "frontScreen");
-        this.addListItem(ul, "Size Guide", "sizesScreen");
+        this.addListItem(ul, "Size Guide", "sizeScreen");
         this.addListItem(ul, "Shipping", "shipping");
         this.addListItem(ul, "About Us", "about");
         this.addListItem(ul, "Cart", "cart");
@@ -91,10 +89,8 @@ export class Header extends Body {
         const logoLink = anchor(logoWrapper, "./");
         logoWrapper.class = "logo-wrapper";
         logoLink.class = "logo";
-
         const logoImageDark = image(logoLink, "./img/icons/RD-logo-darkmode.svg", "Rainy Days logo for dark-theme");
         const logoImageLight = image(logoLink, "./img/icons/RD-logo-lightmode.svg", "Rainy Days logo for light-theme");
-
         //Adding dark and light theme logos to the document, so that
         //the "old" system of using CSS to change color theme will work.
         logoImageDark.class = "dark-theme";
@@ -111,9 +107,7 @@ export class Header extends Body {
     addListItem(parent, name, page) {
         const li = this.create("li");
         parent.appendChild(li);
-
         const navigationButton = button(li, name, selectScreen, page);
-
         navigationButton.class = "headerNavButton";
     }
 

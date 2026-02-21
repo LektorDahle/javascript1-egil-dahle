@@ -1,4 +1,4 @@
-import { divider, paragraph, image } from "../html-elements.js";
+import { divider, paragraph, image, anchor } from "../html-elements.js";
 
 
 export function mainPage() {
@@ -31,7 +31,7 @@ export class MainContentPage {
      * @param {*} data 
      */
     makeJacketCard(data) {
-        const contentWrapper = divider(this.main);
+        const contentWrapper = anchor(this.main, "/jacket/#" + String(data.id));
         contentWrapper.class = "content-short";
         image(contentWrapper, data.image.url, data.image.alt)
         const text = divider(contentWrapper);
