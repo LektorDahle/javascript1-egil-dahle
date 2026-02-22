@@ -1,4 +1,4 @@
-import { divider, paragraph, image, anchor, header } from "../html-elements.js";
+import { MyElement, divider, paragraph, image, anchor, header } from "../html-elements.js";
 
 
 export function mainPage() {
@@ -19,6 +19,9 @@ export class MainContentPage {
 
     }
 
+    renderFilters() {
+
+    }
     async renderJackets() {
         const allData = await this.getAllData();
         allData.data.forEach((/**@type {object} */data) => {
@@ -49,6 +52,17 @@ export class MainContentPage {
             const price = paragraph(contentWrapper, data.price);
             price.class = "price";
         }
+
+        const likedList = JSON.parse(localStorage.getItem("likedJackets") || "[]");
+        const like = new LikeButton(contentWrapper, data.id)
+        if (likedList.includes(String(data.id))) {
+            like.like();
+        } else if (data.favorite) {
+            localStorage.setItem("likedJackets", JSON.stringify([...likedList, data.id]));
+            like.like();
+        } else {
+
+        }
     }
 
     async getAllData() {
@@ -76,5 +90,46 @@ export class MainContentPage {
         theError.element.style.fontSize = "3rem";
         theError.element.style.textAlign = "center";
         throw (err)
+    }
+}
+
+
+class LikeButton {
+    /**
+     * 
+     * @param {MyElement} parent
+     * @param {string} jacketId
+     */
+    constructor(parent, jacketId) {
+        this.image = document.createElement("img");
+        this.image.src = "../img/icons/heart-unfilled.svg";
+        this.liked = false;
+        const likeButton = document.createElement("button");
+        likeButton.appendChild(this.image);
+        parent.append = likeButton;
+        likeButton.classList.add("like-button");
+        this.jacketId = jacketId;
+        likeButton.addEventListener("click", (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            if (this.liked) {
+                this.unlike();
+            } else {
+                this.like();
+            }
+        });
+    }
+    like() {
+        this.liked = true;
+        this.image.src = "../img/icons/heart-filled.svg";
+        const likedList = JSON.parse(localStorage.getItem("likedJackets") || "[]");
+        if (likedList.includes(this.jacketId)) return;
+        localStorage.setItem("likedJackets", JSON.stringify([...likedList, this.jacketId]));
+    }
+    unlike() {
+        this.liked = false;
+        this.image.src = "../img/icons/heart-unfilled.svg";
+        const likedList = JSON.parse(localStorage.getItem("likedJackets") || "[]");
+        localStorage.setItem("likedJackets", JSON.stringify(likedList.filter(id => id !== this.jacketId)));
     }
 }

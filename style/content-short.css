@@ -53,3 +53,9 @@
 .content-short>h1 {
     z-index: 20;
 }
+
+.like-button {
+    position: absolute;
+    bottom: 0%;
+    z-index: 100;
+}

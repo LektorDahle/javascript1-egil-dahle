@@ -1,5 +1,4 @@
 import { makeHeaderAndFooter } from "./header-footer.js";
-//import { Head } from "./head.js";
 import { mainPage } from "./pages/home.js"
 import { sizesPage } from "./pages/sizes.js"
 import { jacketPage } from "./pages/jacket.js"
@@ -58,6 +57,9 @@ function setScreen(screen) {
 
 
 document.addEventListener("DOMContentLoaded", () => {
+    if (!localStorage.getItem("likedList")) {
+        localStorage.setItem("likedList", "[]")
+    }
     makeHeaderAndFooter();
     const screen = localStorage.getItem("screen");
     if (screen) {

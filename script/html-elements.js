@@ -1,4 +1,4 @@
-class MyElement {
+export class MyElement {
     /**
      * MyElement is an base-class for creation and handling of
      * HTML elemnts, hopefully to make other parts of the code more readable!
