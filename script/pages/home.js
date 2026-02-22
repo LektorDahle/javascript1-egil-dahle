@@ -65,11 +65,18 @@ export class MainContentPage {
         const allData = await this.getAllData();
         /** @type {string[]} */
         const activeFilters = JSON.parse(localStorage.getItem("filters") || "[]");
+        const favorites = JSON.parse(localStorage.getItem("likedList") || "[]");
         allData.data.forEach((/**@type {*} */data) => {
             if (activeFilters.includes("Male") && data.gender == "Male") {
                 this.makeJacketCard(data)
             }
-            if (activeFilters.includes("Female") && data.gender == "Female") {
+            else if (activeFilters.includes("Female") && data.gender == "Female") {
+                this.makeJacketCard(data)
+            }
+            else if (activeFilters.includes("onSale") && data.onSale == true) {
+                this.makeJacketCard(data)
+            }
+            else if (activeFilters.includes("favorite") && favorites.includes(data.id)) {
                 this.makeJacketCard(data)
             }
         })
@@ -99,8 +106,8 @@ export class MainContentPage {
             price.class = "price";
         }
 
-        const likedList = JSON.parse(localStorage.getItem("likedJackets") || "[]");
-        const unLikedList = JSON.parse(localStorage.getItem("unLikedJackets") || "[]");
+        const likedList = JSON.parse(localStorage.getItem("likedList") || "[]");
+        const unLikedList = JSON.parse(localStorage.getItem("unLikedList") || "[]");
         const like = new LikeButton(contentWrapper, data.id);
         const id = String(data.id);
 
@@ -112,7 +119,7 @@ export class MainContentPage {
             like.like();
         } else {
             if (!unLikedList.includes(id)) {
-                localStorage.setItem("unLikedJackets", JSON.stringify([...unLikedList, id]));
+                localStorage.setItem("unLikedList", JSON.stringify([...unLikedList, id]));
             }
         }
     }
@@ -173,12 +180,12 @@ class LikeButton {
     }
     like() {
         this.redHeart()
-        const likedList = JSON.parse(localStorage.getItem("likedJackets") || "[]");
+        const likedList = JSON.parse(localStorage.getItem("likedList") || "[]");
         if (likedList.includes(this.jacketId)) return;
-        localStorage.setItem("likedJackets", JSON.stringify([...likedList, this.jacketId]));
+        localStorage.setItem("likedList", JSON.stringify([...likedList, this.jacketId]));
         /** @type {string[]} */
-        const unLikedList = JSON.parse(localStorage.getItem("unLikedJackets") || "[]");
-        localStorage.setItem("unLikedJackets", JSON.stringify(unLikedList.filter((id) => id !== this.jacketId)));
+        const unLikedList = JSON.parse(localStorage.getItem("unLikedList") || "[]");
+        localStorage.setItem("unLikedList", JSON.stringify(unLikedList.filter((id) => id !== this.jacketId)));
     }
     redHeart() {
         this.liked = true;
@@ -187,13 +194,13 @@ class LikeButton {
     unlike() {
         this.grayHeart()
         /** @type {string[]} */
-        const likedList = JSON.parse(localStorage.getItem("likedJackets") || "[]");
-        localStorage.setItem("likedJackets", JSON.stringify(likedList.filter((likedId) => likedId !== this.jacketId)));
+        const likedList = JSON.parse(localStorage.getItem("likedList") || "[]");
+        localStorage.setItem("likedList", JSON.stringify(likedList.filter((likedId) => likedId !== this.jacketId)));
 
         /** @type {string[]} */
-        const unLikedList = JSON.parse(localStorage.getItem("unLikedJackets") || "[]");
+        const unLikedList = JSON.parse(localStorage.getItem("unLikedList") || "[]");
         if (!unLikedList.includes(this.jacketId)) {
-            localStorage.setItem("unLikedJackets", JSON.stringify([...unLikedList, this.jacketId]));
+            localStorage.setItem("unLikedList", JSON.stringify([...unLikedList, this.jacketId]));
         }
     }
     grayHeart() {
