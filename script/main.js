@@ -23,29 +23,38 @@ function setScreen(screen) {
     const main = document.getElementsByTagName("main")[0] || alert("Could not render page!");
     main.id = "";
     main.innerHTML = ""
-    switch (screen) {
-        case "frontScreen":
-            mainPage()
-            break;
-        case "sizeScreen":
-            sizesPage()
-            break;
-        case "jacket":
-            jacketPage()
-            break;
-        case "shipping":
-            jacketPage()
-            break;
-        case "about":
-            jacketPage()
-            break;
-        case "cart":
-            jacketPage()
-            break;
-        default:
-            mainPage();
-    }
+    const hash = window.location.hash.slice(1);
+    if (hash) {
+        if (hash.startsWith("jacket/")) {
+            const id = hash.split("/")[1];
+            jacketPage(id);
+            return;
+        }
+    } else
+        switch (screen) {
+            case "frontScreen":
+                mainPage()
+                break;
+            case "sizeScreen":
+                sizesPage()
+                break;
+            case "jacket":
+                //jacketPage()
+                break;
+            case "shipping":
+                //jacketPage()
+                break;
+            case "about":
+                //jacketPage()
+                break;
+            case "cart":
+                //jacketPage()
+                break;
+            default:
+                mainPage();
+        }
 }
+
 
 
 document.addEventListener("DOMContentLoaded", () => {

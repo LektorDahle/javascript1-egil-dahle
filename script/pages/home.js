@@ -31,12 +31,12 @@ export class MainContentPage {
      * @param {*} data 
      */
     makeJacketCard(data) {
-        const contentWrapper = anchor(this.main, "/jacket/#" + String(data.id));
+        const contentWrapper = anchor(this.main, "/#jacket/" + String(data.id));
         contentWrapper.class = "content-short";
-        image(contentWrapper, data.image.url, data.image.alt)
+        image(contentWrapper, data.image.url, data.image.alt);
         const text = divider(contentWrapper);
-        text.element.innerHTML = "ADD TO CART"
-        text.class = "button-style-main"
+        text.element.innerHTML = "BUY";
+        text.class = "button-style-main";
     }
 
     async getAllData() {
