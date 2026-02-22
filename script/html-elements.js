@@ -118,6 +118,18 @@ class Img extends MyElement {
     }
 }
 
+class Header extends MyElement {
+    /**
+     * 
+     * @param {HTMLElement | MyElement} parent 
+     * @param {string} tag 
+     * @param {string} text 
+     */
+    constructor(parent, tag, text) {
+        super(parent, tag)
+        this.element.textContent = text;
+    }
+}
 
 class P extends MyElement {
     /**
@@ -175,6 +187,14 @@ class Button extends MyElement {
   * @param {string} src 
   */
 export const anchor = (parent, src) => new A(parent, src);
+
+/**
+  * @param {HTMLElement | MyElement} parent 
+  * @param {string} tag 
+  * @param {string} text 
+  */
+export const header = (parent, tag, text) => new Header(parent, tag, text);
+
 
 /**
   * Creates a new div element with parent as argument

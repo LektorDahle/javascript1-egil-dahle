@@ -1,4 +1,4 @@
-import { divider, paragraph, image, anchor } from "../html-elements.js";
+import { divider, paragraph, image, anchor, header } from "../html-elements.js";
 
 
 export function mainPage() {
@@ -21,8 +21,8 @@ export class MainContentPage {
 
     async renderJackets() {
         const allData = await this.getAllData();
-        allData.data.forEach((/**@type {object} */d) => {
-            this.makeJacketCard(d)
+        allData.data.forEach((/**@type {object} */data) => {
+            this.makeJacketCard(data)
         })
     }
 
@@ -33,10 +33,12 @@ export class MainContentPage {
     makeJacketCard(data) {
         const contentWrapper = anchor(this.main, "/#jacket/" + String(data.id));
         contentWrapper.class = "content-short";
+        header(contentWrapper, "h1", data.title.replace("Rainy Days", ""))
         image(contentWrapper, data.image.url, data.image.alt);
         const text = divider(contentWrapper);
         text.element.innerHTML = "BUY";
         text.class = "button-style-main";
+        paragraph(contentWrapper, data.price)
     }
 
     async getAllData() {
@@ -63,6 +65,6 @@ export class MainContentPage {
         theError.element.style.color = "red";
         theError.element.style.fontSize = "3rem";
         theError.element.style.textAlign = "center";
-        throw(err)
+        throw (err)
     }
 }

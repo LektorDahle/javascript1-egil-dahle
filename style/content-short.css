@@ -38,3 +38,7 @@
     bottom: 5%;
     right: 10%;
 }
+
+.content-short>h1 {
+    z-index: 20;
+}
