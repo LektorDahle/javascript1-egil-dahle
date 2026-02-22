@@ -162,7 +162,7 @@ export class LikeButton {
      */
     constructor(parent, jacketId) {
         this.image = document.createElement("img");
-        this.image.src = String(window.location.pathname) + "/img/icons/heart-unfilled.svg";
+        this.image.src = `/${window.location.pathname.split("/")[1]}/img/icons/heart-unfilled.svg`;
         this.liked = false;
         const likeButton = document.createElement("button");
         likeButton.appendChild(this.image);
@@ -190,7 +190,7 @@ export class LikeButton {
     }
     redHeart() {
         this.liked = true;
-        this.image.src = String(window.location.pathname) + "/img/icons/heart-filled.svg";
+        this.image.src = `/${window.location.pathname.split("/")[1]}/img/icons/heart-filled.svg`;
     }
     unlike() {
         this.grayHeart()
@@ -206,6 +206,6 @@ export class LikeButton {
     }
     grayHeart() {
         this.liked = false;
-        this.image.src = String(window.location.pathname) + "/img/icons/heart-unfilled.svg";
+        this.image.src = `/${window.location.pathname.split("/")[1]}/img/icons/heart-unfilled.svg`;
     }
 }
