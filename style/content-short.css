@@ -73,6 +73,7 @@ aside {
     display: flex;
     align-items: center;
     gap: 1em;
+    justify-content: center;
 }
 
 aside>div {

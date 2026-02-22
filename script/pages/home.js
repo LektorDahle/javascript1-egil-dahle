@@ -24,6 +24,9 @@ export class MainContentPage {
         this.aside = document.createElement("aside");
         header(this.aside, "h2", "Filters: ");
         this.createCheckbox("Male:", "Male");
+        this.createCheckbox("Female:", "Female");
+        this.createCheckbox("On sale:", "onSale");
+        this.createCheckbox("Favorite:", "favorite");
         this.main.appendChild(this.aside);
     }
     /**
@@ -60,8 +63,12 @@ export class MainContentPage {
 
     async renderJackets() {
         const allData = await this.getAllData();
-        allData.data.forEach((/**@type {object} */data) => {
-            this.makeJacketCard(data)
+        /** @type {string[]} */
+        const activeFilters = JSON.parse(localStorage.getItem("filters") || "[]");
+        allData.data.forEach((/**@type {*} */data) => {
+            if (activeFilters.includes("Male") && data.gender == "Male") {
+                this.makeJacketCard(data)
+            }
         })
     }
 
