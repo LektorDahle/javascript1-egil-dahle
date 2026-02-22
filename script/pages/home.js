@@ -15,13 +15,49 @@ export class MainContentPage {
     constructor(main) {
         this.main = main;
         this.main.id = "content";
+        this.renderFilters();
         this.renderJackets();
 
     }
 
     renderFilters() {
-
+        this.aside = document.createElement("aside");
+        header(this.aside, "h2", "Filters: ");
+        this.createCheckbox("Male:", "Male");
+        this.main.appendChild(this.aside);
     }
+    /**
+     * 
+     * @param {string} name 
+     * @param {string} toFilter
+     */
+    createCheckbox(name, toFilter) {
+        if (!this.aside) return;
+        const div = divider(this.aside);
+        header(div, "h2", name);
+        const check = document.createElement("input");
+        check.type = "checkbox";
+        check.classList.add("filter-checkbox");
+        div.append = check;
+        check.checked = JSON.parse(localStorage.getItem("filters") || "[]").includes(toFilter);
+        check.addEventListener("change", () => {
+            if (check.checked) {
+                const savedFilters = JSON.parse(localStorage.getItem("filters") || "[]");
+                if (!savedFilters.includes(toFilter)) {
+                    localStorage.setItem("filters", JSON.stringify([...savedFilters, toFilter]));
+                }
+            } else {
+                /** @type {string[]} */
+                const savedFilters = JSON.parse(localStorage.getItem("filters") || "[]");
+                localStorage.setItem(
+                    "filters",
+                    JSON.stringify(savedFilters.filter((filterName) => filterName !== toFilter))
+                );
+            }
+            location.reload();
+        });
+    }
+
     async renderJackets() {
         const allData = await this.getAllData();
         allData.data.forEach((/**@type {object} */data) => {

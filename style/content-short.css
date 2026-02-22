@@ -65,3 +65,25 @@
 .like-button>img {
     width: 5em;
 }
+
+
+
+aside {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+aside>div {
+    display: flex;
+    align-items: center;
+}
+
+input[type="checkbox"].filter-checkbox {
+    appearance: auto;
+    -webkit-appearance: checkbox;
+    all: revert;
+    height: 2em;
+    width: 2em;
+}

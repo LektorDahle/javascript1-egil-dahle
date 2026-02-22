@@ -63,6 +63,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!localStorage.getItem("unLikedList")) {
         localStorage.setItem("unLikedList", "[]")
     }
+    if (!localStorage.getItem("filters")) {
+        localStorage.setItem("filters", "[]")
+    }
     makeHeaderAndFooter();
     const screen = localStorage.getItem("screen");
     if (screen) {
