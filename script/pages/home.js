@@ -88,7 +88,7 @@ export class MainContentPage {
      * @param {*} data 
      */
     makeJacketCard(data) {
-        const contentWrapper = anchor(this.main, `./javascript1-egil-dahle/#jacket/` + String(data.id));
+        const contentWrapper = anchor(this.main, `./#jacket/` + String(data.id));
         contentWrapper.class = "content-short";
         header(contentWrapper, "h1", data.title.replace("Rainy Days", ""))
         image(contentWrapper, data.image.url, data.image.alt);
