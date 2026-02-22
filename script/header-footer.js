@@ -79,7 +79,7 @@ export class Header extends Body {
         this.addListItem(ul, "Size Guide", "sizeScreen");
         this.addListItem(ul, "Shipping", "shipping");
         this.addListItem(ul, "About Us", "about");
-        this.addListItem(ul, "Cart", "cart");
+        this.addListItemWithImage(ul, "Cart", "cart", "../img/icons/cart-lightmode.svg", "../img/icons/cart-darkmode.svg");
     }
     /**
      * Adds (prepends) the logo image to the header
@@ -108,6 +108,24 @@ export class Header extends Body {
         const li = this.create("li");
         parent.appendChild(li);
         const navigationButton = button(li, name, selectScreen, page);
+        navigationButton.class = "headerNavButton";
+    }
+
+    /**
+     * Makes navigation links to the
+     * header navigation menu with images, like the cart icon
+     * @param {HTMLElement} parent
+     * @param {string} name 
+     * @param {string} page 
+     * @param {string} imagePathLight
+     * @param {string} imagePathDark
+     */
+    addListItemWithImage(parent, name, page, imagePathLight, imagePathDark) {
+        const li = this.create("li");
+        parent.appendChild(li);
+        const navigationButton = button(li, name, selectScreen, page);
+        navigationButton.prependImage(imagePathLight, "light-theme");
+        navigationButton.prependImage(imagePathDark, "dark-theme");
         navigationButton.class = "headerNavButton";
     }
 

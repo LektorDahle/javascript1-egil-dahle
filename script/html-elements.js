@@ -85,7 +85,7 @@ class Div extends MyElement {
      * 
      * @param {Node} param 
      */
-    contains(param){
+    contains(param) {
         return this.element.contains(param)
     }
 }
@@ -156,7 +156,17 @@ class Button extends MyElement {
         this.element.textContent = text;
         this.element.onclick = () => { /** @type {any} */ (onclick)(...args); }
     }
-
+    /**
+     * 
+     * @param {string} imagePath 
+     * @param {string} imgClass
+     */
+    prependImage(imagePath, imgClass = "") {
+        const image = document.createElement("img");
+        image.src = imagePath;
+        image.classList.add(imgClass);
+        this.element.prepend(image)
+    }
 }
 
 /**
