@@ -1,8 +1,0 @@
-{
-    "base": "./style/base.css",
-    "typography": "./style/typography.css",
-    "header": "./style/header.css",
-    "main": "./style/main.css",
-    "footer": "./style/footer.css",
-    "media-rules": "./style/at-media-rules.css"
-}

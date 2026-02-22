@@ -5,15 +5,35 @@ main {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: top center;
+    align-items: center;
 }
 
-main>article {
+main>article,
+.jacket-wrapper {
     margin: clamp(1em, 10vw, 5em) clamp(.2em, 5vw, 20em);
     padding: clamp(0.2em, 10vw, 7em);
     background: color-mix(in srgb, var(--background-color), transparent 50%);
 }
 
+.jacket-wrapper {
+    position: relative;
+    max-width: 50em;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+
 .button-wrapper-right {
     display: flex;
     flex-direction: row-reverse;
+}
+
+.jacket-content-div>img {
+    width: 20em;
+}
+
+.jacket-content-div {
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
 }

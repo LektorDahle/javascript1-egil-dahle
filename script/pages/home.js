@@ -95,14 +95,14 @@ export class MainContentPage {
         text.element.innerHTML = "BUY";
         text.class = "button-style-main";
         if (data.onSale) {
-            const price = paragraph(contentWrapper, data.price);
+            const price = paragraph(contentWrapper, "£" + data.price);
             price.class = "price";
             price.strikeThrough();
-            const salePrice = paragraph(contentWrapper, "SALE: " + data.discountedPrice);
+            const salePrice = paragraph(contentWrapper, "SALE: £" + data.discountedPrice);
             salePrice.class = "onSale";
         }
         else {
-            const price = paragraph(contentWrapper, data.price);
+            const price = paragraph(contentWrapper, "£" + data.price);
             price.class = "price";
         }
 
@@ -153,7 +153,7 @@ export class MainContentPage {
 }
 
 
-class LikeButton {
+export class LikeButton {
     /**
      * 
      * @param {MyElement} parent
