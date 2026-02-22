@@ -101,18 +101,40 @@ export class Page {
 class BasketButton {
     /**
      * 
-     * @param {HTMLElement | MyElement} parent 
+     * @param {MyElement} parent 
      * @param {string} id
      */
     constructor(parent, id) {
-        this.button = header(parent, "h1", "ADD TO BASKET");
-        this.button.class = "button-style-main";
+        this.button = document.createElement("button");
+        parent.append = this.button;
+        this.inBasket = false
+
+        const h = header(this.button, "h1", "ADD TO BASKET");
+        h.class = "button-style-main";
         this.id = id;
 
+        this.button.onclick = () => {
+            if (!this.inBasket) {
+                this.addToBasket()
+                h.element.textContent = "REMOVE FROM BASKET";
+            }
+            else {
+                h.element.textContent = "ADD TO BASKET";
+                this.removeFromBasket();
+            }
+        }
     }
 
-    addToBasket(){
-         const basket = JSON.parse(localStorage.getItem("basket") || "[]");
-         localStorage.setItem("basket", JSON.stringify([...basket, this.id]));
+    addToBasket() {
+        const basket = JSON.parse(localStorage.getItem("basket") || "[]");
+        localStorage.setItem("basket", JSON.stringify([...basket, this.id]));
+        this.inBasket = true;
+    }
+
+    removeFromBasket() {
+        /** @type {string[]} */
+        const basket = JSON.parse(localStorage.getItem("basket") || "[]");
+        localStorage.setItem("basket", JSON.stringify(basket.filter((likedId) => likedId !== this.id)));
+        this.inBasket = false;
     }
 }

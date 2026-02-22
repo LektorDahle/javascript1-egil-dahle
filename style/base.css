@@ -46,3 +46,12 @@ input[type="checkbox"] {
     height: 100%;
     inset: 0;
 }
+
+.jacket-content-div {
+    display: flex;
+}
+
+.jacket-content-div>button {
+    border: none;
+    background: none;
+}
