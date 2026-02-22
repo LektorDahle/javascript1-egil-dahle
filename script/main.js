@@ -60,6 +60,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!localStorage.getItem("likedList")) {
         localStorage.setItem("likedList", "[]")
     }
+    if (!localStorage.getItem("unLikedList")) {
+        localStorage.setItem("unLikedList", "[]")
+    }
     makeHeaderAndFooter();
     const screen = localStorage.getItem("screen");
     if (screen) {

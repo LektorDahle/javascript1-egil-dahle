@@ -54,14 +54,20 @@ export class MainContentPage {
         }
 
         const likedList = JSON.parse(localStorage.getItem("likedJackets") || "[]");
-        const like = new LikeButton(contentWrapper, data.id)
-        if (likedList.includes(String(data.id))) {
-            like.like();
+        const unLikedList = JSON.parse(localStorage.getItem("unLikedJackets") || "[]");
+        const like = new LikeButton(contentWrapper, data.id);
+        const id = String(data.id);
+
+        if (likedList.includes(id)) {
+            like.redHeart();
+        } else if (unLikedList.includes(id)) {
+            like.grayHeart();
         } else if (data.favorite) {
-            localStorage.setItem("likedJackets", JSON.stringify([...likedList, data.id]));
             like.like();
         } else {
-
+            if (!unLikedList.includes(id)) {
+                localStorage.setItem("unLikedJackets", JSON.stringify([...unLikedList, id]));
+            }
         }
     }
 
@@ -120,16 +126,32 @@ class LikeButton {
         });
     }
     like() {
-        this.liked = true;
-        this.image.src = "../img/icons/heart-filled.svg";
+        this.redHeart()
         const likedList = JSON.parse(localStorage.getItem("likedJackets") || "[]");
         if (likedList.includes(this.jacketId)) return;
         localStorage.setItem("likedJackets", JSON.stringify([...likedList, this.jacketId]));
+        /** @type {string[]} */
+        const unLikedList = JSON.parse(localStorage.getItem("unLikedJackets") || "[]");
+        localStorage.setItem("unLikedJackets", JSON.stringify(unLikedList.filter((id) => id !== this.jacketId)));
+    }
+    redHeart() {
+        this.liked = true;
+        this.image.src = "../img/icons/heart-filled.svg";
     }
     unlike() {
+        this.grayHeart()
+        /** @type {string[]} */
+        const likedList = JSON.parse(localStorage.getItem("likedJackets") || "[]");
+        localStorage.setItem("likedJackets", JSON.stringify(likedList.filter((likedId) => likedId !== this.jacketId)));
+
+        /** @type {string[]} */
+        const unLikedList = JSON.parse(localStorage.getItem("unLikedJackets") || "[]");
+        if (!unLikedList.includes(this.jacketId)) {
+            localStorage.setItem("unLikedJackets", JSON.stringify([...unLikedList, this.jacketId]));
+        }
+    }
+    grayHeart() {
         this.liked = false;
         this.image.src = "../img/icons/heart-unfilled.svg";
-        const likedList = JSON.parse(localStorage.getItem("likedJackets") || "[]");
-        localStorage.setItem("likedJackets", JSON.stringify(likedList.filter(id => id !== this.jacketId)));
     }
 }
