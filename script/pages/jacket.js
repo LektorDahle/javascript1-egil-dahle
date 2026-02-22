@@ -1,5 +1,4 @@
-//import { MyElement, divider, paragraph, image, anchor, header } from "../html-elements.js";
-import { divider, paragraph, header, image } from "../html-elements.js";
+import { MyElement, divider, paragraph, header, image } from "../html-elements.js";
 import { LikeButton } from "./home.js";
 
 
@@ -37,9 +36,8 @@ export class Page {
         image(middleDiv, jacketData.data.image.url, jacketData.data.image.alt)
         paragraph(middleDiv, jacketData.data.description);
 
-        const text = header(bottomDiv, "h1", "ADD TO BASKET");
+        new BasketButton(bottomDiv, jacketData.data.id);
 
-        text.class = "button-style-main";
         if (jacketData.data.onSale) {
             const price = paragraph(bottomDiv, "£" + jacketData.data.price);
             price.class = "price";
@@ -100,6 +98,21 @@ export class Page {
     }
 }
 
-class BasketButton{
+class BasketButton {
+    /**
+     * 
+     * @param {HTMLElement | MyElement} parent 
+     * @param {string} id
+     */
+    constructor(parent, id) {
+        this.button = header(parent, "h1", "ADD TO BASKET");
+        this.button.class = "button-style-main";
+        this.id = id;
 
+    }
+
+    addToBasket(){
+         const basket = JSON.parse(localStorage.getItem("basket") || "[]");
+         localStorage.setItem("basket", JSON.stringify([...basket, this.id]));
+    }
 }
