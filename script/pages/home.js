@@ -69,6 +69,9 @@ export class MainContentPage {
             if (activeFilters.includes("Male") && data.gender == "Male") {
                 this.makeJacketCard(data)
             }
+            if (activeFilters.includes("Female") && data.gender == "Female") {
+                this.makeJacketCard(data)
+            }
         })
     }
 
