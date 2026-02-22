@@ -37,3 +37,17 @@ main>article,
     flex-direction: row;
     gap: 2em;
 }
+
+.cart {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.cart-item {
+    border-bottom: .25px solid black;
+}
+
+.cart-image {
+    height: 4em;
+}
