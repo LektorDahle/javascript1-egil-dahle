@@ -38,7 +38,17 @@ export class MainContentPage {
         const text = divider(contentWrapper);
         text.element.innerHTML = "BUY";
         text.class = "button-style-main";
-        paragraph(contentWrapper, data.price)
+        if (data.onSale) {
+            const price = paragraph(contentWrapper, data.price);
+            price.class = "price";
+            price.strikeThrough();
+            const salePrice = paragraph(contentWrapper, "SALE: " + data.discountedPrice);
+            salePrice.class = "onSale";
+        }
+        else {
+            const price = paragraph(contentWrapper, data.price);
+            price.class = "price";
+        }
     }
 
     async getAllData() {

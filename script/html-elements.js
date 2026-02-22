@@ -147,6 +147,9 @@ class P extends MyElement {
 
         this.element.style.whiteSpace = text;
     }
+    strikeThrough(){
+        this.element.classList.add("strike")
+    }
 }
 
 

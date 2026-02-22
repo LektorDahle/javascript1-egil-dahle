@@ -24,13 +24,24 @@
     height: 250px;
 }
 
-.content-short>p {
+.price {
     position: absolute;
     top: 5%;
     left: 10%;
     background: var(--secondary-cta);
     padding: .25em .75em;
     border-radius: 5em;
+}
+
+.onSale {
+    position: absolute;
+    top: 10%;
+    right: 0%;
+    font-size: 1.2em;
+    background: rgba(255, 0, 0, 0.526);
+    padding: .25em .75em;
+    border-radius: 5em;
+    transform: rotate(45deg);
 }
 
 .content-short>div {

@@ -125,3 +125,8 @@ form input {
     display: block;
     margin-bottom: 1em;
 }
+
+.strike {
+    text-decoration: line-through;
+    color: rgb(124, 106, 106);
+}
