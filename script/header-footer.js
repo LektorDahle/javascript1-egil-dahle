@@ -76,10 +76,8 @@ export class Header extends Body {
         this.mainElement.appendChild(this.nav);
         this.nav.appendChild(ul);
         this.addListItem(ul, "Jackets", "frontScreen");
-        this.addListItem(ul, "Size Guide", "sizeScreen");
-        this.addListItem(ul, "Shipping", "shipping");
         this.addListItem(ul, "About Us", "about");
-        this.addListItemWithImage(ul, "Cart", "cart", "../img/icons/cart-lightmode.svg", "../img/icons/cart-darkmode.svg");
+        this.addListItemWithImage(ul, "Cart", "cart", window.location.pathname + "/img/icons/cart-lightmode.svg", window.location.pathname + "../img/icons/cart-darkmode.svg");
     }
     /**
      * Adds (prepends) the logo image to the header

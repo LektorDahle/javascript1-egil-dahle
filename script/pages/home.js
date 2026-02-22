@@ -2,7 +2,6 @@ import { MyElement, divider, paragraph, image, anchor, header } from "../html-el
 
 
 export function mainPage() {
-    //window.location.hash = "mainpage"; // const screen = location.hash.slice(1); reads the url
     const main = document.getElementsByTagName("main")[0] || alert("Could not render page!");
     new MainContentPage(main);
 }
@@ -57,7 +56,9 @@ export class MainContentPage {
                     JSON.stringify(savedFilters.filter((filterName) => filterName !== toFilter))
                 );
             }
-            location.reload();
+            this.main.innerHTML = "";
+            this.renderFilters();
+            this.renderJackets();
         });
     }
 
@@ -161,7 +162,7 @@ export class LikeButton {
      */
     constructor(parent, jacketId) {
         this.image = document.createElement("img");
-        this.image.src = "../img/icons/heart-unfilled.svg";
+        this.image.src = window.location.pathname + "/img/icons/heart-unfilled.svg";
         this.liked = false;
         const likeButton = document.createElement("button");
         likeButton.appendChild(this.image);
@@ -189,7 +190,7 @@ export class LikeButton {
     }
     redHeart() {
         this.liked = true;
-        this.image.src = "../img/icons/heart-filled.svg";
+        this.image.src = window.location.pathname + "/img/icons/heart-filled.svg";
     }
     unlike() {
         this.grayHeart()
@@ -205,6 +206,6 @@ export class LikeButton {
     }
     grayHeart() {
         this.liked = false;
-        this.image.src = "../img/icons/heart-unfilled.svg";
+        this.image.src = window.location.pathname + "/img/icons/heart-unfilled.svg";
     }
 }

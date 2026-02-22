@@ -1,7 +1,7 @@
 import { makeHeaderAndFooter } from "./header-footer.js";
 import { mainPage } from "./pages/home.js"
-import { sizesPage } from "./pages/sizes.js"
 import { jacketPage } from "./pages/jacket.js"
+import { cartPage } from "./pages/basket.js";
 
 /**
  * 
@@ -34,20 +34,11 @@ function setScreen(screen) {
             case "frontScreen":
                 mainPage()
                 break;
-            case "sizeScreen":
-                sizesPage()
-                break;
-            case "jacket":
-                //jacketPage()
-                break;
-            case "shipping":
-                //jacketPage()
-                break;
             case "about":
                 //jacketPage()
                 break;
             case "cart":
-                //jacketPage()
+                cartPage()
                 break;
             default:
                 mainPage();

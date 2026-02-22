@@ -109,17 +109,17 @@ class BasketButton {
         parent.append = this.button;
         this.inBasket = false
 
-        const h = header(this.button, "h1", "ADD TO BASKET");
+        const h = header(this.button, "h1", "ADD TO CART");
         h.class = "button-style-main";
         this.id = id;
 
         this.button.onclick = () => {
             if (!this.inBasket) {
                 this.addToBasket()
-                h.element.textContent = "REMOVE FROM BASKET";
+                h.element.textContent = "REMOVE FROM CART";
             }
             else {
-                h.element.textContent = "ADD TO BASKET";
+                h.element.textContent = "ADD TO CART";
                 this.removeFromBasket();
             }
         }
