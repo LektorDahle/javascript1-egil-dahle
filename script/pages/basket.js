@@ -29,7 +29,22 @@ class Page {
         })
         const priceSum = divider(cartWrapper);
         priceSum.element.style.borderTop = "2px solid black";
+        priceSum.element.style.borderBottom = "2px solid black";
         header(priceSum, "h2", "TOTAL: £" + String(this.price));
+
+        const buyButton = document.createElement("button");
+        buyButton.textContent = "BUY JACKETS";
+        buyButton.classList.add("button-style-main")
+        cartWrapper.append = buyButton;
+        buyButton.onclick = () => {
+            this.main.innerHTML = "";
+            const art = document.createElement("article");
+            this.main.appendChild(art);
+            const confirmation = paragraph(art, "Thank you for buying jackets at Rainy Days!");
+            confirmation.element.style.color = "red";
+            confirmation.element.style.fontSize = "3rem";
+            confirmation.element.style.textAlign = "center";
+        }
     }
 
     /**
