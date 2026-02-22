@@ -77,7 +77,7 @@ export class Header extends Body {
         this.nav.appendChild(ul);
         this.addListItem(ul, "Jackets", "frontScreen");
         this.addListItem(ul, "About Us", "about");
-        this.addListItemWithImage(ul, "Cart", "cart", "./img/icons/cart-lightmode.svg",  "./img/icons/cart-darkmode.svg");
+        this.addListItemWithImage(ul, "Cart", "cart", "/javascript1-egil-dahle/img/icons/cart-lightmode.svg",  "/javascript1-egil-dahle/img/icons/cart-darkmode.svg");
     }
     /**
      * Adds (prepends) the logo image to the header
